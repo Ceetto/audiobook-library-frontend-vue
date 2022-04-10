@@ -28,7 +28,9 @@ export default {
   data() {
     return {
       message: "deez nuts",
-      currentPath: window.location.hash
+      currentPath: window.location.hash,
+      links: null,
+      cw: this.$route.hash
     }
   },
   methods:{
