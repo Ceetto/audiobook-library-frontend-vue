@@ -7,10 +7,6 @@ import Book from "./components/Book"
 // import Genre from "@/components/Genre";
 import { createRouter,createWebHistory} from 'vue-router'
 
-// const BookTemp =  {
-//     template: '<p>Potato</p>'
-// }
-
 const routes = [
     {path: '/', component: Home},
     {name: 'books', path: '/books/:link', component: Books},
