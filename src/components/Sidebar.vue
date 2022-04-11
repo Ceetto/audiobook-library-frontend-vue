@@ -4,7 +4,10 @@
       <li><router-link to="/">Home</router-link> </li>
       <li><router-link :to="{name: 'books', params: {link: links['audiobooks']}}">All books</router-link> </li>
       <li><router-link :to="{name: 'genres', params: {link: links['genres']}}">All genres</router-link> </li>
-<!--      <li><router-link to="/users">All users</router-link> </li>-->
+    </ul>
+    <hr>
+    <ul>
+      <li><router-link :to="{name: 'genreCreate', params: {title: 'Create Genre'}}">Create Genre</router-link> </li>
     </ul>
   </div>
 
