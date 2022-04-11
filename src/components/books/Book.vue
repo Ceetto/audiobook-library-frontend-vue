@@ -12,11 +12,14 @@
     <h3>Duration:</h3>
     <p>{{book["duration"] / 1000}}s</p>
   </div>
+  <hr>
+  <router-link :to="{name: 'reviewForm', params: {link: book.url, title: 'Create review', users: $route.params.users}}"> Write review </router-link>
+  <Reviews></Reviews>
 </template>
 
 <script>
 import Genres from "@/components/genres/Genres";
-
+import Reviews from "@/components/reviews/Reviews"
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Book",
@@ -25,6 +28,9 @@ export default {
       isFetching: true,
       book: this.fetchData()
     }
+  },
+  components: {
+    Reviews
   },
   methods: {
     async fetchData(){

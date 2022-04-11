@@ -4,7 +4,7 @@
   <div class="topnav">
     <div v-if="!isFetching">
       <router-link to="/">Home</router-link>
-      <router-link :to="{name: 'books', params: {link: links['audiobooks']}}">All books</router-link>
+      <router-link :to="{name: 'books', params: {link: links['audiobooks'], users: links['users']}}">All books</router-link>
       <router-link :to="{name: 'genres', params: {link: links['genres']}}">All genres</router-link>
       <router-link :to="{name: 'users', params: {link: links['users']}}">All Users</router-link>
       <router-link :to="{name: 'genreForm', params: {title: 'Create Genre', request: 'POST', link: links.genres,
