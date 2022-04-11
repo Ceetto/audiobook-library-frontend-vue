@@ -5,6 +5,7 @@
 <!--    <Home/>-->
 <!--  </div>-->
   <router-view :links=this.links></router-view>
+
 </template>
 
 <script>
@@ -37,6 +38,7 @@ export default {
     async fetchData(){
       const res = await fetch("https://groep34.webdev.ilabt.imec.be/")
       this.links = await res.json()
+      //return res.json();
     }
   },
   // computed: {

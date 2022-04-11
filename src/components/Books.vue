@@ -1,6 +1,10 @@
 <template>
   <h1> All Audiobooks</h1>
-  <p> {{ typeof links }} </p>
+  <ul>
+    <li v-for="book in books " :key="book">
+      <router-link to=""> {{ book['name'] }} </router-link>
+    </li>
+  </ul>
 </template>
 
 <script>
@@ -10,10 +14,24 @@ export default {
   props:{
     links: Object
   },
-  async data() {
-    //console.log(this.props)
+  methods: {
+    async fetchData(){
+      await this.links;
+      const res = await fetch(this.links["audiobooks"]);
+      const books = await res.json();
+      this.books = [];
+      for (let i in books['audiobooks'])
+      await this.fetchBookData(books['audiobooks'][i]);
+    },
+    async fetchBookData(url){
+      const bres = await fetch(url);
+      const bdata = await bres.json();
+      this.books.push(bdata)
+    }
+  },
+  data() {
     return {
-      //link: await this.props.links["audiobooks"]
+      books: this.fetchData()
     }
   }
 }

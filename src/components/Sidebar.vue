@@ -23,6 +23,7 @@ export default {
 #sideBar{
   float: left;
   width: 200px;
+  height: 1000px;
 }
 
 </style>
