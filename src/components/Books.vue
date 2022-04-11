@@ -21,7 +21,8 @@ export default {
       const books = await res.json();
       this.books = [];
       for (let i in books['audiobooks'])
-      await this.fetchBookData(books['audiobooks'][i]);
+        await this.fetchBookData(books['audiobooks'][i]);
+      await this.books.sort((b1, b2) => b1["name"].localeCompare(b2["name"]))
     },
     async fetchBookData(url){
       const bres = await fetch(url);

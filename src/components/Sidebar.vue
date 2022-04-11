@@ -3,7 +3,7 @@
     <ul>
       <li><router-link to="/">Home</router-link> </li>
       <li><router-link to="/books">All audiobooks</router-link> </li>
-<!--      <li><router-link to="/genres">All genres</router-link> </li>-->
+      <li><router-link to="/genres">All genres</router-link> </li>
 <!--      <li><router-link to="/users">All users</router-link> </li>-->
     </ul>
   </div>
