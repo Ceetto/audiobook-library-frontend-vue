@@ -30,7 +30,7 @@ export default {
     return {
       message: "deez nuts",
       currentPath: window.location.hash,
-      links: null,
+      links: this.fetchData(),
       cw: this.$route.hash
     }
   },
