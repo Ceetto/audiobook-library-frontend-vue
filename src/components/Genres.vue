@@ -3,8 +3,9 @@
   <ul>
     <li v-for="genre in genres " :key="genre">
 <!--      <router-link to="{{ 'genres/' + genre['url'].split('/').pop() }}"> {{ genre['name'] }} </router-link>-->
-<!--      <router-link to="{{ '/genres/' + genre['url'].split('/').pop() }}"> {{ genre['url'].split('/').pop() }} </router-link>-->
-      <router-link to="{{ getUrl(genre) }}"> {{ '/genres/' +  genre['url'].split('/').pop() }} </router-link>
+      <router-link to="/genre"> {{ getUrl(genre) }} </router-link>
+<!--      <router-link :to="{path: getUrl(genre), params: {genre: genre}}"> {{ getUrl(genre) }} </router-link>-->
+
     </li>
   </ul>
 </template>
@@ -37,7 +38,8 @@ export default {
   },
   data() {
     return {
-      genres: this.fetchData()
+      genres: this.fetchData(),
+      genreLink: "String"
     }
   }
 }

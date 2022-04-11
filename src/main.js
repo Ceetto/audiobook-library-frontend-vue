@@ -4,15 +4,19 @@ import Home from "@/components/Home";
 import Books from "@/components/Books";
 import Genres from "@/components/Genres";
 import Genre from "@/components/Genre";
+import Users from "@/components/Users";
 import { createRouter,createWebHistory} from 'vue-router'
 
 const routes = [
     {path: '/', component: Home},
     {path: '/books', component: Books, props: true},
-    {path: '/genres', component: Genres, props: true, children: [
-            {path: ':id', component: Genre, props: true}
-        ]
-    },
+    // {path: '/genres', component: Genres, props: true, children: [
+    //         {path: ':id', component: Genre, props: true}
+    //     ]
+    // },
+    {path: '/genres', component: Genres, props: true},
+    {path: '/genre', component: Genre, props: true},
+    {path: '/users', component: Users, props: true}
 ]
 
 const router = createRouter({

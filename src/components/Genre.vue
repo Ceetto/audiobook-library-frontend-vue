@@ -1,5 +1,5 @@
 <template>
-  <h1> Genre: {{ name }}</h1>
+  <h1> Genre test</h1>
 </template>
 
 <script>
