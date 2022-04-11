@@ -11,6 +11,8 @@
     <p>{{book["publicationDate"]}}</p>
     <h3>Duration:</h3>
     <p>{{book["duration"] / 1000}}s</p>
+    <h3>Purchase link:</h3>
+    <p>{{book["link"]}}</p>
   </div>
 </template>
 

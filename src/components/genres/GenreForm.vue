@@ -35,7 +35,6 @@ export default {
       } else {
         let genreName = document.getElementById("name").value;
         let description = document.getElementById("description").value
-        console.log(this.$route.params["request"]);
         requestOptions = {
           method: this.$route.params["request"].toString(),
           headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},

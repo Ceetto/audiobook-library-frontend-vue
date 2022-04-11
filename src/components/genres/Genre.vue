@@ -25,6 +25,7 @@ export default {
       const res = await fetch(this.$route.params["link"].toString());
       this.genre = await res.json()
       let books = this.genre.books;
+      console.log(books)
       this.genre.books = [];
       for (let i in books){
         this.genre.books.push(Books.methods.fetchBookData(books[i]))

@@ -10,17 +10,21 @@ import { createRouter,createWebHistory} from 'vue-router'
 import Users from "@/components/users/Users";
 import User from "@/components/users/User";
 import UserForm from "@/components/users/UserForm";
+import BookForm from "@/components/books/BookForm";
 
 const routes = [
     {path: '/', component: Home},
     {name: 'books', path: '/books/:link', component: Books},
     {name: 'book', path: '/books/book/:link', component: Book},
+    {name: 'bookForm', path: '/books/create/:title/:request/:link/:redirectLink/:route/:genresLink', component: BookForm},
+
     {name: 'genres', path: '/genres/:link', component: Genres},
     {name: 'genre', path: '/genres/genre/:link', component: Genre},
-    {name: 'genreForm', path: '/genres/create/:title', component: GenreForm},
+    {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl', component: GenreForm},
+
     {name: 'users', path:'/users/:link', component: Users},
     {name: 'user', path: '/users/user/:link', component: User},
-    {name: 'userForm', path: '/users/create/:title', component: UserForm},
+    {name: 'userForm', path: '/users/create/:title/:request/:link/:redirectLink/:route', component: UserForm},
 
 ]
 

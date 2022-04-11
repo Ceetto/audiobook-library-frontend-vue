@@ -5,6 +5,9 @@
       <router-link :to="{name: 'books', params: {link: links['audiobooks']}}">All books</router-link>
       <router-link :to="{name: 'genres', params: {link: links['genres']}}">All genres</router-link>
       <router-link :to="{name: 'users', params: {link: links['users']}}">All Users</router-link>
+
+      <router-link :to="{name: 'bookForm', params: {title: 'Create Book', request: 'POST', link: links.audiobooks,
+        redirectLink: links.audiobooks, route:'books', genresLink: links.genres}}">Create Book</router-link>
       <router-link :to="{name: 'genreForm', params: {title: 'Create Genre', request: 'POST', link: links.genres,
             redirectRoute: 'genres', redirectUrl: links.genres}}">Create Genre</router-link>
       <router-link :to="{name: 'userForm', params: {title: 'Create User', request: 'POST', link: links.users,
