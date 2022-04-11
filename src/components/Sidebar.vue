@@ -9,7 +9,8 @@
     <hr id="littleLine">
     <br>
     <ul>
-      <li><router-link :to="{name: 'genreForm', params: {title: 'Create Genre', request: 'POST', link: links.genres}}">Create Genre</router-link> </li>
+      <li><router-link :to="{name: 'genreForm', params: {title: 'Create Genre', request: 'POST', link: links.genres, redirectLink: links.genres, route:'genres'}}">Create Genre</router-link> </li>
+      <li><router-link :to="{name: 'userForm', params: {title: 'Create User', request: 'POST', link: links.users, redirectLink: links.users, route:'users'}}">Create User</router-link> </li>
     </ul>
 
   </div>

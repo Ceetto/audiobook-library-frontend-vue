@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Genres from "@/components/Genres";
+import Genres from "@/components/genres/Genres";
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names

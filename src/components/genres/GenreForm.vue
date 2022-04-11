@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <button class="btn btn-primary" type="submit" @click="sendGenreRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
+  <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
 </template>
 
 <script>
@@ -25,7 +25,7 @@ export default {
     getTitle(){
       return this.$route.params["title"]
     },
-    async sendGenreRequest() {
+    async sendRequest() {
       let requestOptions;
       if (this.isDeleteRequest()){
         requestOptions = {

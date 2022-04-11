@@ -2,6 +2,9 @@
   <div id="user" v-if="!isFetching">
     <h1>{{user["name"]}}</h1>
     <p>{{user["email"]}}</p>
+    <router-link :to="{name: 'userForm', params: {title: 'Delete User', request: 'DELETE', link:user.url, redirectLink: user['index'], route: 'users'}}"> Delete User </router-link>
+    <br>
+    <router-link :to="{name: 'userForm', params: {title: 'Update User', request: 'PATCH', link:user.url, redirectLink: user['url'], route: 'user'}}"> Update User </router-link>
   </div>
 </template>
 
