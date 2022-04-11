@@ -7,6 +7,9 @@
     <router-link :to="{name: 'book', params:{link: book['url']}}" v-for="book in genre['books']" :key="book">{{book["name"]}}</router-link>
     <hr>
     <router-link :to="{name: 'genreForm', params: {title: 'Delete Genre', request: 'DELETE', link:genre.url}}"> Delete Genre </router-link>
+    <br>
+    <br>
+    <router-link :to="{name: 'genreForm', params: {title: 'Update Genre', request: 'PATCH', link:genre.url}}"> Update Genre </router-link>
   </div>
 </template>
 
