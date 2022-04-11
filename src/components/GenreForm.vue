@@ -35,6 +35,7 @@ export default {
       } else {
         let genreName = document.getElementById("name").value;
         let description = document.getElementById("description").value
+        console.log(this.$route.params["request"]);
         requestOptions = {
           method: this.$route.params["request"].toString(),
           headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
@@ -42,6 +43,7 @@ export default {
         };
       }
       await fetch(this.$route.params["link"].toString(), requestOptions);
+      await this.$router.push({name: this.$route.params.redirectRoute.toString(), params: {link: this.$route.params.redirectUrl.toString()}});
     },
     isDeleteRequest(){
       return this.$route.params["request"] === 'DELETE'
