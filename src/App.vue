@@ -4,7 +4,7 @@
 <!--  <div v-if="true">-->
 <!--    <Home/>-->
 <!--  </div>-->
-  <router-view :links=this.links></router-view>
+  <router-view></router-view>
 
 </template>
 
@@ -30,29 +30,31 @@ export default {
     return {
       message: "deez nuts",
       currentPath: window.location.hash,
-      links: this.fetchData(),
+      //links: this.fetchData(),
       cw: this.$route.hash
     }
   },
-  methods:{
-    async fetchData(){
-      const res = await fetch("https://groep34.webdev.ilabt.imec.be/")
-      this.links = await res.json()
-      //return res.json();
-    }
-  },
+  // methods:{
+  //   async fetchData(){
+  //     console.log("aardappel\n =================");
+  //     console.log(this.$route.params);
+  //     const res = await fetch("https://groep34.webdev.ilabt.imec.be/")
+  //     this.links = await res.json()
+  //     //return res.json();
+  //   }
+  // },
   // computed: {
   //   currentView() {
   //     return routes[this.currentPath.slice(1) || '/']
   //   }
   // },
-  async mounted(){
-    await this.fetchData()
-    // console.log(window.location.hash)
-    // window.addEventListener('hashchange', async () => {
-    //   this.currentPath = window.location.hash
-    // })
-  }
+  // async mounted(){
+  //   await this.fetchData()
+  //   // console.log(window.location.hash)
+  //   // window.addEventListener('hashchange', async () => {
+  //   //   this.currentPath = window.location.hash
+  //   // })
+  // }
 }
 </script>
 
