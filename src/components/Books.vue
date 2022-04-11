@@ -1,10 +1,9 @@
 <template>
   <div id="AllBooks" v-if="!isFetching">
     <h1 v-if="!hasParent"> All Audiobooks</h1>
-    <h2 v-if="hasParent"> Audiobooks with this genre </h2>
     <ul>
       <li v-for="book in books " :key="book">
-        <router-link :to= "{name: 'book', params:{link: book['url']}}" > {{ book['name'] }} </router-link> <br>
+        <router-link :to= "{name: 'book', params:{link: book['url']}}"> {{ book['name'] }} </router-link> <br>
       </li>
     </ul>
   </div>

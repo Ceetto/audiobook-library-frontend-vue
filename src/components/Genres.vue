@@ -25,14 +25,13 @@ export default {
       const genres = await res.json();
       this.genres = [];
       for (let i in genres['genres'])
-        await this.fetchGenreData(genres['genres'][i]);
+        this.genres.push(await this.fetchGenreData(genres['genres'][i]));
       await this.genres.sort((b1, b2) => b1["name"].localeCompare(b2["name"]))
       this.isFetching = false;
     },
     async fetchGenreData(url){
       const res = await fetch(url);
-      const data = await res.json();
-      this.genres.push(data);
+      return res.json();
     }
   }
 }
