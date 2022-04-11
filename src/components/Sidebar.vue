@@ -5,7 +5,11 @@
       <li><router-link :to="{name: 'books', params: {link: links['audiobooks']}}">All books</router-link> </li>
       <li><router-link :to="{name: 'genres', params: {link: links['genres']}}">All genres</router-link> </li>
       <li><router-link :to="{name: 'users', params: {link: links['users']}}">All Users</router-link> </li>
-      <hr id="littleLine">
+    </ul>
+    <hr id="littleLine">
+    <br>
+    <ul>
+      <li><router-link :to="{name: 'genreForm', params: {title: 'Create Genre', request: 'POST', link: links.genres}}">Create Genre</router-link> </li>
     </ul>
 
   </div>

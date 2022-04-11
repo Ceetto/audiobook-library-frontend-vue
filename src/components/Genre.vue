@@ -5,6 +5,8 @@
     <p>{{ genre.description}}</p>
     <h3>Books with this genre:</h3>
     <router-link :to="{name: 'book', params:{link: book['url']}}" v-for="book in genre['books']" :key="book">{{book["name"]}}</router-link>
+    <hr>
+    <router-link :to="{name: 'genreForm', params: {title: 'Delete Genre', request: 'DELETE', link:genre.url}}"> Delete Genre </router-link>
   </div>
 </template>
 
