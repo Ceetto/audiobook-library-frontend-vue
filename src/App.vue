@@ -1,5 +1,5 @@
 <template>
-  <SideBar></SideBar>
+  <TopBar></TopBar>
 <!--  <div id="content"><component :is="currentView" :link=links /></div>-->
 <!--  <div v-if="true">-->
 <!--    <Home/>-->
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import SideBar from './components/Sidebar'
+import TopBar from './components/Topbar'
 //import Home from "./components/Home"
 // import Books from "./components/Books"
 // import VueRouter from 'vue-router'
@@ -24,7 +24,7 @@ import SideBar from './components/Sidebar'
 export default {
   name: 'App',
   components: {
-    SideBar,
+    TopBar,
   },
   data() {
     return {
@@ -59,15 +59,15 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: left;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-#content {
-  /*text-align: center;*/
-}
+/*#app {*/
+/*  font-family: Avenir, Helvetica, Arial, sans-serif;*/
+/*  -webkit-font-smoothing: antialiased;*/
+/*  -moz-osx-font-smoothing: grayscale;*/
+/*  text-align: left;*/
+/*  color: #2c3e50;*/
+/*  margin-top: 60px;*/
+/*}*/
+/*#content {*/
+/*  !*text-align: center;*!*/
+/*}*/
 </style>
