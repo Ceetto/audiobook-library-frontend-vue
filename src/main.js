@@ -30,6 +30,3 @@ const router = createRouter({
 })
 
 createApp(App).use(router).mount('#app')
-// const app = Vue.createApp({})
-
-// app.use(router)
