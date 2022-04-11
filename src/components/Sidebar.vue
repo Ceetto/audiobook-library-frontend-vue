@@ -4,10 +4,11 @@
       <li><router-link to="/">Home</router-link> </li>
       <li><router-link :to="{name: 'books', params: {link: links['audiobooks']}}">All books</router-link> </li>
       <li><router-link :to="{name: 'genres', params: {link: links['genres']}}">All genres</router-link> </li>
-<!--      <li><router-link to="/users">All users</router-link> </li>-->
+      <li><router-link :to="{name: 'users', params: {link: links['users']}}">All Users</router-link> </li>
+      <hr id="littleLine">
     </ul>
-  </div>
 
+  </div>
 </template>
 
 <script>
@@ -34,6 +35,10 @@ export default {
   float: left;
   width: 200px;
   height: 1000px;
+}
+#littleLine{
+  width: 100px;
+  float: left;
 }
 
 </style>
