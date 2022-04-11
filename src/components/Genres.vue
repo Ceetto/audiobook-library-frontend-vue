@@ -1,45 +1,38 @@
 <template>
-  <h1> All Genres</h1>
-  <ul>
-    <li v-for="genre in genres " :key="genre">
-<!--      <router-link to="{{ 'genres/' + genre['url'].split('/').pop() }}"> {{ genre['name'] }} </router-link>-->
-      <router-link to="/genre"> {{ getUrl(genre) }} </router-link>
-<!--      <router-link :to="{path: getUrl(genre), params: {genre: genre}}"> {{ getUrl(genre) }} </router-link>-->
-
-    </li>
-  </ul>
+  <div id="AllGenres" v-if="!isFetching">
+    <h1> All Genres</h1>
+    <ul>
+      <li v-for="genre in genres " :key="genre">
+        <router-link :to= "{name: 'genre', params:{link: genre['url']}}" > {{ genre['name'] }} </router-link> <br>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Genres",
-  props: {
-    links: Object
+  data() {
+    return {
+      isFetching: true,
+      genres: this.fetchData()
+    }
   },
   methods: {
-    async fetchData() {
-      await this.links;
-      const res = await fetch(this.links["genres"]);
+    async fetchData(){
+      const res = await fetch(this.$route.params["link"].toString());
       const genres = await res.json();
       this.genres = [];
       for (let i in genres['genres'])
         await this.fetchGenreData(genres['genres'][i]);
       await this.genres.sort((b1, b2) => b1["name"].localeCompare(b2["name"]))
+      this.isFetching = false;
     },
-    async fetchGenreData(url) {
+    async fetchGenreData(url){
       const res = await fetch(url);
       const data = await res.json();
-      this.genres.push(data)
-    },
-    getUrl(genre){
-      return '/genres/' + genre['url'].split('/').pop()
-    }
-  },
-  data() {
-    return {
-      genres: this.fetchData(),
-      genreLink: "String"
+      this.genres.push(data);
     }
   }
 }

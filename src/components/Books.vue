@@ -34,7 +34,7 @@ export default {
       const bdata = await bres.json();
       this.books.push(bdata);
     }
-  },
+  }
 
 }
 </script>
