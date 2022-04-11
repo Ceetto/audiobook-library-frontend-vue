@@ -9,12 +9,8 @@ import TopBar from './components/Topbar'
 export default {
   name: 'App',
   components: {
-    TopBar,
-  },
-  data() {
-    return {
-    }
-  },
+    TopBar
+  }
 }
 </script>
 

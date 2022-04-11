@@ -3,7 +3,7 @@
     <h1 v-if="!hasParent"> All Audiobooks</h1>
     <ul>
       <li v-for="book in books " :key="book">
-        <router-link :to= "{name: 'book', params:{link: book['url']}}"> {{ book['name'] }} </router-link> <br>
+        <router-link :to= "{name: 'book', params:{link: book['url'], users: $route.params.users}}"> {{ book['name'] }} </router-link> <br>
       </li>
     </ul>
   </div>
