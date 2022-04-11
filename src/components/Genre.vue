@@ -2,16 +2,7 @@
   <h1> Genre: {{ genre.name }}</h1>
   <h2> Description:</h2>
   <h3>{{ genre.description}}</h3>
-
-<!--  <div id="AllBooks" v-if="!isFetching">-->
-<!--    <h2> Books:</h2>-->
-<!--    <ul>-->
-<!--      <li v-for="book in books " :key="book">-->
-<!--        <router-link :to= "{name: 'book', params:{link: book['url']}}" > {{ book['name'] }} </router-link> <br>-->
-<!--      </li>-->
-<!--    </ul>-->
-<!--  </div>-->
-  <BooksComp></BooksComp>
+  <BooksComp :hasParent=true>  </BooksComp>
 </template>
 
 <script>
@@ -28,7 +19,7 @@ export default {
   },
   data(){
     return {
-      genre: this.fetchGenreData(),
+      genre: this.fetchGenreData()
     }
   },
   components:{

@@ -1,6 +1,7 @@
 <template>
   <div id="AllBooks" v-if="!isFetching">
-    <h1> All Audiobooks</h1>
+    <h1 v-if="!hasParent"> All Audiobooks</h1>
+    <h2 v-if="hasParent"> Audiobooks with this genre </h2>
     <ul>
       <li v-for="book in books " :key="book">
         <router-link :to= "{name: 'book', params:{link: book['url']}}" > {{ book['name'] }} </router-link> <br>
@@ -13,6 +14,9 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Books",
+  props:{
+    hasParent: Boolean
+  },
   data() {
     return {
       isFetching: true,
@@ -25,14 +29,13 @@ export default {
       const books = await res.json();
       this.books = [];
       for (let i in books['audiobooks'])
-        await this.fetchBookData(books['audiobooks'][i]);
+        this.books.push(await this.fetchBookData(books['audiobooks'][i]));
       await this.books.sort((b1, b2) => b1["name"].localeCompare(b2["name"]))
       this.isFetching = false;
     },
     async fetchBookData(url){
       const bres = await fetch(url);
-      const bdata = await bres.json();
-      this.books.push(bdata);
+      return bres.json();
     }
   }
 
