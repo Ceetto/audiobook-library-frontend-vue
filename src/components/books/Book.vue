@@ -36,7 +36,7 @@
 
 <script>
 import Genres from "@/components/genres/Genres";
-import Reviews from "@/components/reviews/Reviews"
+import Reviews from "@/components/reviews/Reviews";
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "Book",

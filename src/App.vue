@@ -12,6 +12,17 @@ export default {
   name: 'App',
   components: {
     TopBar
+  },
+  methods: {
+    async checkStatusAndRedirect(res, route, router){
+      let status = await res.status;
+      if (status === 400){
+        let message = await res.json();
+        alert(message.message);
+      } else {
+        await router.push(route);
+      }
+    }
   }
 }
 </script>

@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import App from '@/App';
 export default {
   name: "GenreForm",
   data(){
@@ -55,8 +56,11 @@ export default {
           body: JSON.stringify({name: genreName, description: description})
         };
       }
-      await fetch(this.$route.params["link"].toString(), requestOptions);
-      await this.$router.push({name: this.$route.params.redirectRoute.toString(), params: {link: this.$route.params.redirectUrl.toString()}});
+      const res = await fetch(this.$route.params["link"].toString(), requestOptions);
+      await App.methods.checkStatusAndRedirect(res, {
+        name: this.$route.params.redirectRoute.toString(),
+        params: {link: this.$route.params.redirectUrl.toString()}
+      }, this.$router);
     },
     isDeleteRequest(){
       return this.$route.params["request"] === 'DELETE'
