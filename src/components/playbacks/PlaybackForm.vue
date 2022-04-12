@@ -8,7 +8,7 @@
       <label>audiobook:</label>
       <select id="book">
         <option value="" disabled selected>Select audiobook</option>
-        <option v-for="book in books" :key="book" :value="book.url" :selected="pbData === undefined ? false : book.url === pbData.audiobook"> {{book.name}} </option>
+        <option v-for="book in books" :key="book" :value="book.url" :selected="pbData === undefined ? false : (book.url === pbData.audiobook)"> {{book.name}} </option>
       </select>
       <br>
       <label>Progress:</label>
@@ -58,8 +58,6 @@ export default {
         };
       }
       const res = await fetch(this.$route.params['link'].toString(), requestOptions);
-      // await this.$router.push({name: this.$route.params['route'].toString(), params:{link:this.$route.params['redirectLink'],
-      //     books:this.$route.params['books'], pbLink:this.$route.params['link']}})
       await App.methods.checkStatusAndRedirect(res, {name: this.$route.params['route'].toString(), params:{link:this.$route.params['redirectLink'],
           books:this.$route.params['books'], pbLink:this.$route.params['link']}}, this.$router)
     },
