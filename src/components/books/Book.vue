@@ -26,7 +26,7 @@
     <hr>
     <router-link :to="{name: 'reviewForm', params: {link: book.url, title: 'Create review', users: $route.params.users,
                       request: 'POST', redirectRoute: 'book', redirectUrl: book.url, reviewsLink: $route.params.reviewsLink,
-                      genresLink: $route.params.genresLink, pbLink:$route.params.pbLink}}"> Write review </router-link>
+                      reqUrl:$route.params.reviewsLink, genresLink: $route.params.genresLink, pbLink:$route.params.pbLink}}"> Write review </router-link>
     <Reviews :reviews="book.reviews" :users="$route.params.users.toString()" :genres-link="$route.params.genresLink.toString()"
               :reviews-link="$route.params.reviewsLink.toString()" :books-link="book['index']" :pb-link="$route.params.pbLink">  </Reviews>
   </div>
@@ -59,7 +59,6 @@ export default {
       for (let i in genres){
         this.book.genres.push(await Genres.methods.fetchGenreData(genres[i]))
       }
-      console.log(this.book.genres);
       this.book.publicationDate = this.formatDate(this.book.publicationDate)
       this.isFetching = false;
     },

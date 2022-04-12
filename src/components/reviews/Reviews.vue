@@ -6,8 +6,8 @@
     <router-link class="data" :to="{name: 'user', params: {link: review.user, books:booksLink, pbLink:pbLink}}"> {{review.userName}} </router-link>
     <p class="data">  |  Score: {{review.score}}  |  </p>
     <router-link class="data" :to="{name: 'reviewForm', params: {link: review.audiobook, title: 'Edit review', users: users,
-                                    request: 'PATCH', redirectRoute: 'book', redirectUrl: review.audiobook, reviewsLink: review.url,
-                                    genresLink: genresLink}}"> Edit </router-link>
+                                    request: 'PATCH', redirectRoute: 'book', redirectUrl: review.audiobook, reviewsLink: reviewsLink,
+                                    reqUrl:review.url, genresLink: genresLink}}"> Edit </router-link>
     <p> {{review.description}}</p>
   </div>
 </template>

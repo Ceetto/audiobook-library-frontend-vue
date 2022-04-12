@@ -31,7 +31,6 @@ export default {
   methods:{
     async fetchUsers(){
       await this.setCurrentData();
-      console.log(this.currentDescription);
       const res = await fetch(this.$route.params.users.toString());
       const usersJson = await res.json();
       this.users = [];
@@ -53,7 +52,7 @@ export default {
         headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
         body: JSON.stringify({user: user, audiobook: this.$route.params.link, description: description, score: score})
       }
-      const res = await fetch(this.$route.params["reviewsLink"].toString(), requestOptions);
+      const res = await fetch(this.$route.params["reqUrl"].toString(), requestOptions);
       await App.methods.checkStatusAndRedirect(res, {
         name: 'book', params: {
           link: this.$route.params.link, users: this.$route.params.users,
@@ -75,7 +74,7 @@ export default {
         method: 'DELETE',
         headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
       }
-      await fetch(this.$route.params["reviewsLink"].toString(), requestOptions);
+      await fetch(this.$route.params["reqUrl"].toString(), requestOptions);
       await this.$router.push({name: 'book', params: {link: this.$route.params.link, users: this.$route.params.users,
           genresLink: this.$route.params.genresLink, reviewsLink: this.$route.params.reviewsLink}});
     }

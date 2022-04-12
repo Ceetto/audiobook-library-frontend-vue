@@ -32,7 +32,7 @@ const routes = [
     {name: 'playbackForm', path: '/users/user/:title/:request/:link/:redirectLink/:route/:books/:user', component: PlaybackForm},
 
     {name: 'reviews', path: '/books/book/:link/:title/:users', component: Reviews, props: true},
-    {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request/:redirectRoute/:redirectUrl/:reviewsLink/:genresLink/:pbLink', component: ReviewForm}
+    {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request/:redirectRoute/:redirectUrl/:reviewsLink/:genresLink/:pbLink/:reqUrl', component: ReviewForm}
 ]
 
 const router = createRouter({
