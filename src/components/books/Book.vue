@@ -4,7 +4,7 @@
     <h3>Authors:</h3>
     <p v-for="author in book['authors']" :key="author">{{author}}</p>
     <h3>Genres:</h3>
-    <router-link :to="{name: 'genre', params:{link: genre['url']}}" v-for="genre in book['genres']" :key="genre">{{genre["name"]}}</router-link>
+    <router-link :to="{name: 'genre', params:{link: genre['url'], books: book['index']}}" v-for="genre in book['genres']" :key="genre">{{genre["name"]}}</router-link>
     <h3>Summary:</h3>
     <p>{{book["description"]}}</p>
     <h3>Publication Date:</h3>
@@ -13,6 +13,12 @@
     <p>{{book["duration"] / 1000}}s</p>
     <h3>Purchase link:</h3>
     <p>{{book["link"]}}</p>
+    <hr>
+    <router-link :to="{name: 'bookForm', params: {title: 'Delete Book', request: 'DELETE', link:book.url, redirectLink: book['index'], route: 'books',
+                      genresLink: $route.params.genresLink}}"> Delete Book </router-link>
+    <br>
+    <router-link :to="{name: 'bookForm', params: {title: 'Update User', request: 'PATCH', link:book.url, redirectLink: book['url'], route: 'book',
+                      genresLink: $route.params.genresLink}}"> Update Book </router-link>
   </div>
   <hr>
   <router-link :to="{name: 'reviewForm', params: {link: book.url, title: 'Create review', users: $route.params.users,

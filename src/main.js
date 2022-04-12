@@ -16,13 +16,13 @@ import ReviewForm from "@/components/reviews/ReviewForm";
 
 const routes = [
     {path: '/', component: Home},
-    {name: 'books', path: '/books/:link', component: Books},
-    {name: 'book', path: '/books/book/:link', component: Book},
+    {name: 'books', path: '/books/:link/:genresLink', component: Books},
+    {name: 'book', path: '/books/book/:link/:genresLink', component: Book},
     {name: 'bookForm', path: '/books/create/:title/:request/:link/:redirectLink/:route/:genresLink', component: BookForm},
 
-    {name: 'genres', path: '/genres/:link', component: Genres},
-    {name: 'genre', path: '/genres/genre/:link', component: Genre},
-    {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl', component: GenreForm},
+    {name: 'genres', path: '/genres/:link/:books', component: Genres},
+    {name: 'genre', path: '/genres/genre/:link/:books', component: Genre},
+    {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl/:books', component: GenreForm},
 
     {name: 'users', path:'/users/:link', component: Users},
     {name: 'user', path: '/users/user/:link', component: User},

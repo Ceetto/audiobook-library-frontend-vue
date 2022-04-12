@@ -44,7 +44,8 @@
 
    </div>
    <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
- </div>
+  </div>
+
 </template>
 
 <script>
@@ -63,8 +64,9 @@ export default {
       let requestOtions;
       if(this.isDeleteRequest()){
         requestOtions = {
-          method: 'DELETE',
-          headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'}
+          method: 'PATCH',
+          headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
+          body: JSON.stringify({removed:true})
         };
       } else {
         let title = document.getElementById("title").value;
@@ -83,9 +85,10 @@ export default {
           headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
           body: JSON.stringify({authors: authors, genres: genres, name:title, description: summary, duration:duration, publicationDate:date, link:link})
         }
-        await fetch(this.$route.params["link"].toString(), requestOtions);
-        await this.$router.push({name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"]}});
+
       }
+      await fetch(this.$route.params["link"].toString(), requestOtions);
+      await this.$router.push({name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"]}});
     },
 
     async fetchGenres(){
