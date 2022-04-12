@@ -15,7 +15,7 @@
         <input class="form-control" id="email" type="text" placeholder="email" name="email" :value="undefined===userData ? '' : userData.email">
       </div>
     </div>
-    <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
+    <button class="button" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
   </div>
 </template>
 

@@ -5,7 +5,9 @@
     <p class="data">User: </p>
     <router-link class="data" :to="{name: 'user', params: {link: review.user}}"> {{review.userName}} </router-link>
     <p class="data">  |  Score: {{review.score}}  |  </p>
-
+    <router-link class="data" :to="{name: 'reviewForm', params: {link: review.audiobook, title: 'Edit review', users: users,
+                                    request: 'PATCH', redirectRoute: 'book', redirectUrl: review.audiobook, reviewsLink: review.url,
+                                    genresLink: genresLink}}"> Edit </router-link>
     <p> {{review.description}}</p>
   </div>
 </template>
@@ -16,8 +18,9 @@ export default {
   name: "Reviews",
   props: {
     reviews: [Object],
-    users: [Object],
-    genresLink: String
+    users: String,
+    genresLink: String,
+    reviewsLink: String
   },
   methods: {
     async fetchData(){

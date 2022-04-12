@@ -18,7 +18,7 @@
 
      <div>
        <label> Summary: </label>
-       <textarea class="form-control" id="summary" type="textarea" placeholder="summary" name="summary" :value="undefined===bookData ? '' : bookData.description"/>
+       <textarea class="form-control" id="summary" placeholder="summary" name="summary" :value="undefined===bookData ? '' : bookData.description"/>
      </div>
 
      <div>
@@ -43,7 +43,7 @@
      </div>
 
    </div>
-   <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
+   <button class="button" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
   </div>
   <div v-else>
     <p>loading...</p>
