@@ -59,7 +59,7 @@ export default {
       const res = await fetch(this.$route.params["link"].toString(), requestOptions);
       await App.methods.checkStatusAndRedirect(res, {
         name: this.$route.params.redirectRoute.toString(),
-        params: {link: this.$route.params.redirectUrl.toString()}
+        params: {link: this.$route.params.redirectUrl.toString(), pbLink:this.$route.params.pbLink}
       }, this.$router);
     },
     isDeleteRequest(){

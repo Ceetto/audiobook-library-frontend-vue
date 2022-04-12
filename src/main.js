@@ -21,9 +21,9 @@ const routes = [
     {name: 'book', path: '/books/book/:link/:genresLink/:users/:reviewsLink/:pbLink', component: Book},
     {name: 'bookForm', path: '/books/create/:title/:request/:link/:redirectLink/:route/:genresLink/:users/:reviewsLink/:pbLink', component: BookForm},
 
-    {name: 'genres', path: '/genres/:link/:users', component: Genres},
-    {name: 'genre', path: '/genres/genre/:link/:users', component: Genre},
-    {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl/:users', component: GenreForm},
+    {name: 'genres', path: '/genres/:link/:users/:reviewsLink/:pbLink', component: Genres},
+    {name: 'genre', path: '/genres/genre/:link/:users/:reviewsLink/:pbLink', component: Genre},
+    {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl/:users/:reviewsLink/:pbLink', component: GenreForm},
 
     {name: 'users', path:'/users/:link/:books/:pbLink', component: Users},
     {name: 'user', path: '/users/user/:link/:books/:pbLink', component: User},
