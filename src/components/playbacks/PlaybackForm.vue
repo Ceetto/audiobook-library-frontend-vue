@@ -58,7 +58,6 @@ export default {
           body: JSON.stringify({user: this.$route.params.user, audiobook: book, position:progress})
         };
       }
-      console.log(this.$route.params["link"]);
       const res = await fetch(this.$route.params['link'].toString(), requestOptions);
       await App.methods.checkStatusAndRedirect(res, {name: this.$route.params['route'].toString(), params:{link:this.$route.params['redirectLink'],
           books:this.$route.params['books'], pbLink:this.$route.params['pbLink']}}, this.$router)
@@ -69,7 +68,6 @@ export default {
     async fetchPbData(){
       const res = await fetch(this.$route.params['link'].toString());
       this.pbData = await res.json();
-      console.log(this.pbData);
       this.isFetching = false;
     },
     async fetchBooksData(){
@@ -80,7 +78,6 @@ export default {
       this.books = [];
       for (let book of books){
         let tmp = await Books.methods.fetchBookData(book);
-        //console.log(tmp)
         if(!tmp.removed)
           this.books.push(tmp)
       }

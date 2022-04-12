@@ -50,7 +50,6 @@ export default {
         this.user.playbacks.push(pbToadd);
       }
       this.isFetching = false;
-      console.log(this.$route.params.pbLink)
     },
     async fetchDataHelp(url){
       const res = await fetch(url);

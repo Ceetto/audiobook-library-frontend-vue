@@ -127,6 +127,9 @@ export default {
     async fetchBookData(){
       const res = await fetch(this.$route.params["link"].toString());
       this.bookData = await res.json();
+      this.bookData.publicationDate = new Date(this.bookData.publicationDate);
+      this.bookData.publicationDate = this.bookData.publicationDate.toISOString().split('T')[0];
+
     }
   }
 }
