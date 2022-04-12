@@ -5,7 +5,7 @@
     <div v-if="!isFetching">
       <router-link to="/">Home</router-link>
       <router-link :to="{name: 'books', params: {link: links['audiobooks'], users: links['users'], genresLink: links.genres}}">All books</router-link>
-      <router-link :to="{name: 'genres', params: {link: links['genres'], books: links['audiobooks']}}">All genres</router-link>
+      <router-link :to="{name: 'genres', params: {link: links['genres'], books: links['audiobooks'], users:links['users']}}">All genres</router-link>
       <router-link :to="{name: 'users', params: {link: links['users']}}">All Users</router-link>
 
       <router-link :to="{name: 'bookForm', params: {title: 'Create Book', request: 'POST', link: links.audiobooks,

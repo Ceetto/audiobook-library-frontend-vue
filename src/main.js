@@ -20,8 +20,8 @@ const routes = [
     {name: 'book', path: '/books/book/:link/:genresLink/:users', component: Book},
     {name: 'bookForm', path: '/books/create/:title/:request/:link/:redirectLink/:route/:genresLink', component: BookForm},
 
-    {name: 'genres', path: '/genres/:link/:books', component: Genres},
-    {name: 'genre', path: '/genres/genre/:link/:books', component: Genre},
+    {name: 'genres', path: '/genres/:link/:books/:users', component: Genres},
+    {name: 'genre', path: '/genres/genre/:link/:books/:users', component: Genre},
     {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl/:books', component: GenreForm},
 
     {name: 'users', path:'/users/:link', component: Users},
