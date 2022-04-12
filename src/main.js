@@ -29,7 +29,7 @@ const routes = [
     {name: 'userForm', path: '/users/create/:title/:request/:link/:redirectLink/:route', component: UserForm},
 
     {name: 'reviews', path: '/books/book/:link/:title/:users', component: Reviews},
-    {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request', component: ReviewForm}
+    {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request/:redirectRoute/:redirectUrl', component: ReviewForm}
 ]
 
 const router = createRouter({
