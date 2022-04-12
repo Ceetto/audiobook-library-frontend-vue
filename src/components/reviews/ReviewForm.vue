@@ -1,18 +1,19 @@
 <template>
-    <h2> {{ $route.params.title }}</h2>
-    <label>User:</label>
+  <h2> {{ $route.params.title }}</h2>
+  <label>User:</label>
 
-    <select id="dropDownUser" name="user" >
-    <option v-for="user in users" :key="user" :value="user.url" :selected="user.url === currentUser"> {{user.name}} </option>
-    </select>
-    <label>Score:</label>
-    <select id="dropDownScore" name="score">
-      <option v-for="score in [1,2,3,4,5,6,7,8,9,10]" :key="score" :selected="score === currentScore"> {{score}} </option>
-    </select>
-    <div class="textWrapper">
-      <textarea id="review" rows="10" :value="currentDescription ? currentDescription : ''"></textarea>
-    </div>
-    <button @click="sendReviewRequest()">Submit</button>
+  <select id="dropDownUser" name="user" >
+  <option v-for="user in users" :key="user" :value="user.url" :selected="user.url === currentUser"> {{user.name}} </option>
+  </select>
+  <label>Score:</label>
+  <select id="dropDownScore" name="score">
+    <option v-for="score in [1,2,3,4,5,6,7,8,9,10]" :key="score" :selected="score === currentScore"> {{score}} </option>
+  </select>
+  <div class="textWrapper">
+    <textarea id="review" rows="10" :value="currentDescription ? currentDescription : ''"></textarea>
+  </div>
+  <button class="button" @click="sendReviewRequest()">Update</button>
+  <button class="button" @click="deleteReview()"> Delete </button>
 </template>
 
 <script>
@@ -54,7 +55,7 @@ export default {
       }
       await fetch(this.$route.params["reviewsLink"].toString(), requestOptions);
       await this.$router.push({name: 'book', params: {link: this.$route.params.link, users: this.$route.params.users,
-                              genresLink: this.$route.params.genresLink, reviewsLink: this.$route.params.reviewsLink}})
+                              genresLink: this.$route.params.genresLink, reviewsLink: this.$route.params.reviewsLink}});
     },
     async setCurrentData(){
       if(this.$route.params.request === "PATCH"){
@@ -64,6 +65,15 @@ export default {
         this.currentScore = review.score;
         this.currentDescription = review.description
       }
+    },
+    async deleteReview(){
+      let requestOptions = {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
+      }
+      await fetch(this.$route.params["reviewsLink"].toString(), requestOptions);
+      await this.$router.push({name: 'book', params: {link: this.$route.params.link, users: this.$route.params.users,
+          genresLink: this.$route.params.genresLink, reviewsLink: this.$route.params.reviewsLink}});
     }
   }
 }

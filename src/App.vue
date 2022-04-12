@@ -45,4 +45,10 @@ input, textarea, button{
 input::placeholder, textarea::placeholder, button{
   color: white;
 }
+
+.button{
+  width: 80px;
+  height: 40px;
+  margin: 15px;
+}
 </style>
