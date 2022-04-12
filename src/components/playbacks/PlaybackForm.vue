@@ -14,7 +14,7 @@
       <label>Progress:</label>
       <input id="progress" type="number" placeholder="position in book" :value="pbData === undefined ? '' : pbData.position">
     </div>
-    <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
+    <button class="button" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
   </div>
 </template>
 
