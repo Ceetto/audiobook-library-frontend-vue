@@ -1,7 +1,7 @@
 <template>
   <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <div class="topnav">
+  <div class="topnav container-fluid">
     <div v-if="!isFetching">
       <router-link to="/">Home</router-link>
       <router-link :to="{name: 'books', params: {link: links['audiobooks'], users: links['users'], genresLink: links.genres}}">All books</router-link>
@@ -42,8 +42,10 @@ export default {
 
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background: #333;
   overflow: hidden;
+  fill: #333;
+  text-align: center;
 }
 
 /* Style the links inside the navigation bar */

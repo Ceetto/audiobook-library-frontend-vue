@@ -1,6 +1,9 @@
 <template>
-  <TopBar></TopBar>
-  <router-view></router-view>
+  <div id="app" class="center">
+    <div><TopBar></TopBar></div>
+    <div><router-view></router-view></div>
+
+  </div>
 </template>
 
 <script>
@@ -15,11 +18,27 @@ export default {
 </script>
 
 <style>
-#app {
+#app{
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
-  color: #2c3e50;
+  color: darkgray;
+}
+.center{
+  margin: auto;
+  width: fit-content;
+}
+a{
+  color: cadetblue;
+}
+body{
+  background: #131516;
+}
+input, textarea, button{
+  background-color: #555;
+}
+input::placeholder, textarea::placeholder, button{
+  color: white;
 }
 </style>
