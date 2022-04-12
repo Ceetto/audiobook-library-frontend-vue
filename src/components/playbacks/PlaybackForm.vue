@@ -57,9 +57,10 @@ export default {
           body: JSON.stringify({user: this.$route.params.user, audiobook: book, position:progress})
         };
       }
+      console.log(this.$route.params["link"]);
       const res = await fetch(this.$route.params['link'].toString(), requestOptions);
       await App.methods.checkStatusAndRedirect(res, {name: this.$route.params['route'].toString(), params:{link:this.$route.params['redirectLink'],
-          books:this.$route.params['books'], pbLink:this.$route.params['link']}}, this.$router)
+          books:this.$route.params['books'], pbLink:this.$route.params['pbLink']}}, this.$router)
     },
     isDeleteRequest(){
       return this.$route.params["request"] === 'DELETE'
@@ -70,7 +71,7 @@ export default {
       this.isFetching = false;
     },
     async fetchBooksData(){
-      console.log(this.$route.params["books"]);
+
       const res = await fetch(this.$route.params["books"].toString());
       this.books = await res.json();
       let books = this.books["audiobooks"];

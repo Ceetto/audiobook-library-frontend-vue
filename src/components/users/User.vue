@@ -14,12 +14,14 @@
       <label style="display: inline">Position: </label>
       <p style="display: inline;"> {{pb.position / 1000}}s / {{pb.audiobook.duration}}s</p>
       <router-link :to="{name: 'playbackForm', params:{title: 'Update Playback for user:' + user.name, request:'PATCH',
-                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books}}"> Update playback </router-link> |
+                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books, pbLink: $route.params.pbLink}}"> Update playback </router-link> |
       <router-link :to="{name: 'playbackForm', params:{title: 'Update Playback for user:' + user.name, request:'DELETE',
-                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books}}"> Delete playback </router-link>
+                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books, pbLink: $route.params.pbLink}}"> Delete playback </router-link>
     </div>
     <hr style="height: 3px">
-    <router-link :to="{name: 'playbackForm', params: {title: 'Create Playback for user: ' + user.name, request: 'POST',link:$route.params.pbLink, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books}}"> Add Playback position </router-link>
+    <router-link :to="{name: 'playbackForm', params: {title: 'Create Playback for user: ' + user.name, request: 'POST',
+                      link:$route.params.pbLink, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books,
+                      pbLink: $route.params.pbLink}}"> Add Playback position </router-link>
   </div>
   <div v-else>
     <p>loading...</p>
@@ -48,6 +50,7 @@ export default {
         this.user.playbacks.push(pbToadd);
       }
       this.isFetching = false;
+      console.log(this.$route.params.pbLink)
     },
     async fetchDataHelp(url){
       const res = await fetch(url);

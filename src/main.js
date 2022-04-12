@@ -29,7 +29,7 @@ const routes = [
     {name: 'user', path: '/users/user/:link/:books/:pbLink', component: User},
     {name: 'userForm', path: '/users/create/:title/:request/:link/:redirectLink/:route/:books/:pbLink', component: UserForm},
 
-    {name: 'playbackForm', path: '/users/user/:title/:request/:link/:redirectLink/:route/:books/:user', component: PlaybackForm},
+    {name: 'playbackForm', path: '/users/user/:title/:request/:link/:redirectLink/:route/:books/:user/:pbLink', component: PlaybackForm},
 
     {name: 'reviews', path: '/books/book/:link/:title/:users', component: Reviews, props: true},
     {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request/:redirectRoute/:redirectUrl/:reviewsLink/:genresLink/:pbLink/:reqUrl', component: ReviewForm}
