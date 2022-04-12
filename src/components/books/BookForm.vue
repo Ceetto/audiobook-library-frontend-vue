@@ -8,38 +8,38 @@
 
      <div>
        <label>Title</label>
-       <input id="title" type="text" placeholder="title" name="title" value="">
+       <input id="title" type="text" placeholder="title" name="title" :value="undefined===bookData ? '' : bookData.name">
      </div>
 
      <div>
        <label> Authors:</label>
-       <input id="authors" type="text" placeholder="authors" name="authors" value="">
+       <input id="authors" type="text" placeholder="authors" name="authors" :value="undefined===bookData ? '' : bookData.authors">
      </div>
 
      <div>
        <label> Summary: </label>
-       <textarea class="form-control" id="summary" type="textarea" placeholder="summary" name="summary" value=""/>
+       <textarea class="form-control" id="summary" type="textarea" placeholder="summary" name="summary" :value="undefined===bookData ? '' : bookData.description"/>
      </div>
 
      <div>
        <label> Duration:</label>
-       <input id="duration" type="text" placeholder="Duration in ms" name="duration" value="">
+       <input id="duration" type="text" placeholder="Duration in ms" name="duration" :value="undefined===bookData ? '' : bookData.duration">
      </div>
 
      <label>Genres:</label>
      <div id="genres" v-for="genre in genres" :key="genre">
-       <input type="checkbox" class="genreCheckbox" name="genre" :id="genre" :value="genre.url" :checked=false>
+       <input type="checkbox" class="genreCheckbox" name="genre" :id="genre" :value="genre.url" :checked=genre.checked>
        <label>{{genre["name"]}}</label>
      </div>
 
      <div>
        <label>Publication Date</label>
-       <input type="date" id="date" name="date">
+       <input type="date" id="date" name="date" :value="undefined===bookData ? '' : bookData.publicationDate">
      </div>
 
      <div>
        <label>Purchase Link:</label>
-       <input type="text" id="link" name="link" placeholder="purchase link">
+       <input type="text" id="link" name="link" placeholder="purchase link" :value="undefined===bookData ? '' : bookData.url">
      </div>
 
    </div>
@@ -57,9 +57,15 @@ import Genres from "@/components/genres/Genres";
 export default {
   name: "BookForm",
   data(){
+
+    let bookData = undefined
+    if(this.$route.params["request"] === 'PATCH'){
+      bookData = this.fetchBookData();
+    }
     return {
       isFetching: true,
-      genres: this.fetchGenres()
+      genres: this.fetchGenres(),
+      bookData: bookData,
     }
   },
   methods:{
@@ -101,6 +107,10 @@ export default {
       this.genres = [];
       for(let i in genres){
         this.genres.push(await Genres.methods.fetchGenreData(genres[i]));
+        if(this.bookData !== undefined)
+          this.genres[i].checked = this.bookData.genres.includes(genres[i])
+        else
+          this.genres[i].checked = false
       }
       this.isFetching = false;
     },
@@ -111,6 +121,11 @@ export default {
 
     isDeleteRequest(){
       return this.$route.params["request"] === 'DELETE'
+    },
+
+    async fetchBookData(){
+      const res = await fetch(this.$route.params["link"].toString());
+      this.bookData = await res.json();
     }
   }
 }

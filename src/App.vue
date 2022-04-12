@@ -2,7 +2,6 @@
   <div id="app" class="center">
     <div><TopBar></TopBar></div>
     <div><router-view></router-view></div>
-
   </div>
 </template>
 
@@ -24,6 +23,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: darkgray;
+  background: #222;
 }
 .center{
   margin: auto;
@@ -33,7 +33,11 @@ a{
   color: cadetblue;
 }
 body{
-  background: #131516;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background: #333;
 }
 input, textarea, button{
   background-color: #555;

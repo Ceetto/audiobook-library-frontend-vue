@@ -44,7 +44,6 @@ export default {
 .topnav {
   background: #333;
   overflow: hidden;
-  fill: #333;
   text-align: center;
 }
 
