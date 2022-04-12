@@ -5,7 +5,8 @@
     <p v-for="author in book['authors']" :key="author">{{author}}</p>
     <h3>Genres:</h3>
     <div v-for="genre in book['genres']" :key="genre" id="genres">
-      <router-link :to="{name: 'genre', params:{link: genre['url'], books: book['index']}}" >{{genre["name"]}}</router-link> |
+      <router-link :to="{name: 'genre', params:{link: genre['url'], books: book['index'],
+                         reviewsLink:$route.params.reviewsLink, pbLink:$route.params.pbLink}}" >{{genre["name"]}}</router-link> |
     </div>
 
     <h3>Summary:</h3>

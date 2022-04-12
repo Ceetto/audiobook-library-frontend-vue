@@ -3,7 +3,7 @@
     <h1> All Genres</h1>
     <ul>
       <li v-for="genre in genres " :key="genre">
-        <router-link :to= "{name: 'genre', params:{link: genre['url']}}" > {{ genre['name'] }} </router-link> <br>
+        <router-link :to= "{name: 'genre', params:{link: genre['url'], reviewsLink: $route.params.reviewsLink, pbLink:$route.params['pbLink']}}" > {{ genre['name'] }} </router-link> <br>
       </li>
     </ul>
   </div>
