@@ -23,7 +23,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: darkgray;
-  background: #222;
+  background: #111;
 }
 .center{
   margin: auto;
@@ -37,7 +37,7 @@ body{
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background: #333;
+  background: #222;
 }
 input, textarea, button{
   background-color: #555;

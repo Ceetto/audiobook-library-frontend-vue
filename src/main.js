@@ -13,6 +13,7 @@ import UserForm from "@/components/users/UserForm";
 import BookForm from "@/components/books/BookForm";
 import Reviews from "@/components/reviews/Reviews";
 import ReviewForm from "@/components/reviews/ReviewForm";
+import PlaybackForm from "@/components/playbacks/PlaybackForm";
 
 const routes = [
     {path: '/', component: Home},
@@ -24,9 +25,11 @@ const routes = [
     {name: 'genre', path: '/genres/genre/:link/:users', component: Genre},
     {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl/:users', component: GenreForm},
 
-    {name: 'users', path:'/users/:link', component: Users},
-    {name: 'user', path: '/users/user/:link', component: User},
+    {name: 'users', path:'/users/:link/:books/:pbLink', component: Users},
+    {name: 'user', path: '/users/user/:link/:books/:pbLink', component: User},
     {name: 'userForm', path: '/users/create/:title/:request/:link/:redirectLink/:route', component: UserForm},
+
+    {name: 'playbackForm', path: '/users/user/:title/:request/:link/:redirectLink/:route/:books/:user', component: PlaybackForm},
 
     {name: 'reviews', path: '/books/book/:link/:title/:users', component: Reviews, props: true},
     {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request/:redirectRoute/:redirectUrl/:reviewsLink/:genresLink', component: ReviewForm}
