@@ -4,7 +4,9 @@
     <h3> Description:</h3>
     <p>{{ genre.description}}</p>
     <h3>Books with this genre:</h3>
-    <router-link :to="{name: 'book', params:{link: book['url'], genresLink: this.genre.index}}" v-for="book in genre['books']" :key="book">{{book["name"]}}</router-link>
+    <div v-for="book in genre['books']" :key="book" id="books">
+      <router-link :to="{name: 'book', params:{link: book['url'], genresLink: this.genre.index}}" >{{book["name"]}}</router-link> |
+    </div>
     <hr>
     <router-link :to="{name: 'genreForm', params: {title: 'Delete Genre', request: 'DELETE', link:genre.url,
                         redirectRoute: 'genres', redirectUrl: genre.index}}"> Delete Genre </router-link>
@@ -44,5 +46,7 @@ export default {
 </script>
 
 <style scoped>
-
+#books{
+  display: inline;
+}
 </style>
