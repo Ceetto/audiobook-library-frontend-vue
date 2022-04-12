@@ -15,7 +15,8 @@
     <p>{{book["link"]}}</p>
   </div>
   <hr>
-  <router-link :to="{name: 'reviewForm', params: {link: book.url, title: 'Create review', users: $route.params.users}}"> Write review </router-link>
+  <router-link :to="{name: 'reviewForm', params: {link: book.url, title: 'Create review', users: $route.params.users,
+                      request: 'POST', redirectRoute: 'book', redirectUrl: book.url}}"> Write review </router-link>
   <Reviews></Reviews>
 </template>
 

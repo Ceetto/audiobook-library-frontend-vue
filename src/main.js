@@ -11,6 +11,8 @@ import Users from "@/components/users/Users";
 import User from "@/components/users/User";
 import UserForm from "@/components/users/UserForm";
 import BookForm from "@/components/books/BookForm";
+import Reviews from "@/components/reviews/Reviews";
+import ReviewForm from "@/components/reviews/ReviewForm";
 
 const routes = [
     {path: '/', component: Home},
@@ -26,6 +28,8 @@ const routes = [
     {name: 'user', path: '/users/user/:link', component: User},
     {name: 'userForm', path: '/users/create/:title/:request/:link/:redirectLink/:route', component: UserForm},
 
+    {name: 'reviews', path: '/books/book/:link/:title/:users', component: Reviews},
+    {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request', component: ReviewForm}
 ]
 
 const router = createRouter({
