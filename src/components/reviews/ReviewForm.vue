@@ -17,7 +17,7 @@
 </template>
 
 <script>
-
+import App from '@/App';
 export default {
   name: "ReviewForm",
   data(){
@@ -53,9 +53,13 @@ export default {
         headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
         body: JSON.stringify({user: user, audiobook: this.$route.params.link, description: description, score: score})
       }
-      await fetch(this.$route.params["reviewsLink"].toString(), requestOptions);
-      await this.$router.push({name: 'book', params: {link: this.$route.params.link, users: this.$route.params.users,
-                              genresLink: this.$route.params.genresLink, reviewsLink: this.$route.params.reviewsLink}});
+      const res = await fetch(this.$route.params["reviewsLink"].toString(), requestOptions);
+      await App.methods.checkStatusAndRedirect(res, {
+        name: 'book', params: {
+          link: this.$route.params.link, users: this.$route.params.users,
+          genresLink: this.$route.params.genresLink, reviewsLink: this.$route.params.reviewsLink
+        }
+      }, this.$router);
     },
     async setCurrentData(){
       if(this.$route.params.request === "PATCH"){

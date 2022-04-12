@@ -53,7 +53,7 @@
 
 <script>
 import Genres from "@/components/genres/Genres";
-
+import App from '@/App';
 export default {
   name: "BookForm",
   data(){
@@ -96,8 +96,10 @@ export default {
         }
 
       }
-      await fetch(this.$route.params["link"].toString(), requestOtions);
-      await this.$router.push({name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"], reviewsLink:this.$route.params["reviewsLink"], pbLink:this.$route.params.pbLink}});
+      const res = await fetch(this.$route.params["link"].toString(), requestOtions);
+      await App.methods.checkStatusAndRedirect(res, {name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"], reviewsLink:this.$route.params["reviewsLink"], pbLink:this.$route.params.pbLink}}, this.$router);
+
+      //await this.$router.push({name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"], reviewsLink:this.$route.params["reviewsLink"], pbLink:this.$route.params.pbLink}});
     },
 
     async fetchGenres(){
