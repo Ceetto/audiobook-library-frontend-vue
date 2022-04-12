@@ -8,11 +8,11 @@
       <label>audiobook:</label>
       <select id="book">
         <option value="" disabled selected>Select audiobook</option>
-        <option v-for="book in books" :key="book" :value="book.url"> {{book.name}} </option>
+        <option v-for="book in books" :key="book" :value="book.url" :selected="book.url === pbData.audiobook"> {{book.name}} </option>
       </select>
       <br>
       <label>Progress:</label>
-      <input id="progress" type="number" placeholder="position in book" value="">
+      <input id="progress" type="number" placeholder="position in book" :value="pbData === undefined ? '' : pbData.position">
     </div>
     <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
   </div>
@@ -64,6 +64,8 @@ export default {
       return this.$route.params["request"] === 'DELETE'
     },
     async fetchPbData(){
+      const res = await fetch(this.$route.params['link'].toString());
+      this.pbData = await res.json();
       this.isFetching = false;
     },
     async fetchBooksData(){

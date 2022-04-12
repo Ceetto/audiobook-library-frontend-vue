@@ -13,9 +13,13 @@
       <h3>{{pb.audiobook.name}}</h3>
       <label style="display: inline">Position: </label>
       <p style="display: inline;"> {{pb.position / 1000}}s / {{pb.audiobook.duration}}s</p>
+      <router-link :to="{name: 'playbackForm', params:{title: 'Update Playback for user:' + user.name, request:'PATCH',
+                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books}}"> Update playback </router-link> |
+      <router-link :to="{name: 'playbackForm', params:{title: 'Update Playback for user:' + user.name, request:'DELETE',
+                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books}}"> Delete playback </router-link>
     </div>
     <hr style="height: 3px">
-    <router-link :to="{name: 'playbackForm', params: {title: 'Create Playback for user: ' + user.name, request: 'POST',link:$route.params.pbLink ,user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books}}"> Add Playback position </router-link>
+    <router-link :to="{name: 'playbackForm', params: {title: 'Create Playback for user: ' + user.name, request: 'POST',link:$route.params.pbLink, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books}}"> Add Playback position </router-link>
   </div>
   <div v-else>
     <p>loading...</p>
