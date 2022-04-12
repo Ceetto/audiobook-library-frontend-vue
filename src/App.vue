@@ -1,7 +1,9 @@
 <template>
-  <div id="app" class="center">
-    <div><TopBar></TopBar></div>
-    <div><router-view></router-view></div>
+  <div class="center">
+    <div id="app">
+      <div><TopBar></TopBar></div>
+      <div><router-view></router-view></div>
+    </div>
   </div>
 </template>
 
@@ -35,6 +37,7 @@ export default {
   text-align: left;
   color: darkgray;
   background: #111;
+  word-break: break-all;
 }
 .center{
   margin: auto;
