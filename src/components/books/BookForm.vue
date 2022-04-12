@@ -99,7 +99,6 @@ export default {
       const res = await fetch(this.$route.params["link"].toString(), requestOtions);
       await App.methods.checkStatusAndRedirect(res, {name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"], reviewsLink:this.$route.params["reviewsLink"], pbLink:this.$route.params.pbLink}}, this.$router);
 
-      //await this.$router.push({name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"], reviewsLink:this.$route.params["reviewsLink"], pbLink:this.$route.params.pbLink}});
     },
 
     async fetchGenres(){
