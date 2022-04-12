@@ -4,7 +4,7 @@
   <div class="topnav container-fluid">
     <div v-if="!isFetching">
       <router-link to="/">Home</router-link>
-      <router-link :to="{name: 'books', params: {link: links['audiobooks'], users: links['users'], genresLink: links.genres}}">All books</router-link>
+      <router-link :to="{name: 'books', params: {link: links['audiobooks'], users: links['users'], genresLink: links.genres, reviewsLink: links['reviews'] }}">All books</router-link>
       <router-link :to="{name: 'genres', params: {link: links['genres'], users:links['users']}}">All genres</router-link>
       <router-link :to="{name: 'users', params: {link: links['users']}}">All Users</router-link>
 

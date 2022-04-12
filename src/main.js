@@ -16,8 +16,8 @@ import ReviewForm from "@/components/reviews/ReviewForm";
 
 const routes = [
     {path: '/', component: Home},
-    {name: 'books', path: '/books/:link/:genresLink/:users', component: Books},
-    {name: 'book', path: '/books/book/:link/:genresLink/:users', component: Book},
+    {name: 'books', path: '/books/:link/:genresLink/:users/:reviewsLink', component: Books},
+    {name: 'book', path: '/books/book/:link/:genresLink/:users/:reviewsLink', component: Book},
     {name: 'bookForm', path: '/books/create/:title/:request/:link/:redirectLink/:route/:genresLink/:users', component: BookForm},
 
     {name: 'genres', path: '/genres/:link/:users', component: Genres},
@@ -28,8 +28,8 @@ const routes = [
     {name: 'user', path: '/users/user/:link', component: User},
     {name: 'userForm', path: '/users/create/:title/:request/:link/:redirectLink/:route', component: UserForm},
 
-    {name: 'reviews', path: '/books/book/:link/:title/:users', component: Reviews},
-    {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request/:redirectRoute/:redirectUrl', component: ReviewForm}
+    {name: 'reviews', path: '/books/book/:link/:title/:users', component: Reviews, props: true},
+    {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request/:redirectRoute/:redirectUrl/:reviewsLink/:genresLink', component: ReviewForm}
 ]
 
 const router = createRouter({

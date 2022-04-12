@@ -15,6 +15,7 @@
 </template>
 
 <script>
+
 export default {
   name: "ReviewForm",
   data(){
@@ -37,16 +38,17 @@ export default {
       return bres.json();
     },
     async sendReviewRequest() {
-      //let review = document.getElementById("review").value;
+      let description = document.getElementById("review").value;
       let score = document.getElementById("dropDownScore").value;
       let user = document.getElementById("dropDownUser").value;
-      console.log(user);
       let requestOptions = {
         method: this.$route.params["request"].toString(),
         headers: {'Content-Type': 'application/vnd.audiobooks+json; charset=utf-8'},
-        body: JSON.stringify({user: user, score: score})
+        body: JSON.stringify({user: user, audiobook: this.$route.params.link, description: description, score: score})
       }
-      await fetch(this.$route.params["link"].toString(), requestOptions);
+      await fetch(this.$route.params["reviewsLink"].toString(), requestOptions);
+      await this.$router.push({name: 'book', params: {link: this.$route.params.link, users: this.$route.params.users,
+                              genresLink: this.$route.params.genresLink, reviewsLink: this.$route.params.reviewsLink}})
     }
   }
 }

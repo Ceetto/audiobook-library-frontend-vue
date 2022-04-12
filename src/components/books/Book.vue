@@ -24,8 +24,9 @@
                       genresLink: $route.params.genresLink}}"> Update Book </router-link>
     <hr>
     <router-link :to="{name: 'reviewForm', params: {link: book.url, title: 'Create review', users: $route.params.users,
-                      request: 'POST', redirectRoute: 'book', redirectUrl: book.url}}"> Write review </router-link>
-    <Reviews></Reviews>
+                      request: 'POST', redirectRoute: 'book', redirectUrl: book.url, reviewsLink: $route.params.reviewsLink,
+                      genresLink: $route.params.genresLink}}"> Write review </router-link>
+    <Reviews :reviews="book.reviews" :users="$route.params.users" :genres-link="$route.params.genresLink.toString()">  </Reviews>
   </div>
   <div v-else>
     <p>loading...</p>
