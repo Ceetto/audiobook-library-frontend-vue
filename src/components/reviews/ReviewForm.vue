@@ -24,12 +24,13 @@ export default {
       users: this.fetchUsers(),
       currentUser: String,
       currentScore: Number,
-      currentDescription: String
+      currentDescription: ''
     }
   },
   methods:{
     async fetchUsers(){
       await this.setCurrentData();
+      console.log(this.currentDescription);
       const res = await fetch(this.$route.params.users.toString());
       const usersJson = await res.json();
       this.users = [];
