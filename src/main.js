@@ -23,7 +23,7 @@ const routes = [
 
     {name: 'genres', path: '/genres/:link/:users/:reviewsLink/:pbLink', component: Genres},
     {name: 'genre', path: '/genres/genre/:link/:users/:reviewsLink/:pbLink', component: Genre},
-    {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl/:users', component: GenreForm},
+    {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl/:users/:reviewsLink/:pbLink', component: GenreForm},
 
     {name: 'users', path:'/users/:link/:books/:pbLink', component: Users},
     {name: 'user', path: '/users/user/:link/:books/:pbLink', component: User},

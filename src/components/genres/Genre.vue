@@ -10,10 +10,10 @@
     </div>
     <hr>
     <router-link :to="{name: 'genreForm', params: {title: 'Delete Genre', request: 'DELETE', link:genre.url,
-                        redirectRoute: 'genres', redirectUrl: genre.index}}"> Delete Genre </router-link>
+                        redirectRoute: 'genres', redirectUrl: genre.index, reviewsLink: $route.params.reviewsLink, pbLink: $route.params.pbLink}}"> Delete Genre </router-link>
     <br>
     <router-link :to="{name: 'genreForm', params: {title: 'Update Genre', request: 'PATCH', link:genre.url,
-                        redirectRoute: 'genre', redirectUrl: genre.url}}"> Update Genre </router-link>
+                        redirectRoute: 'genre', redirectUrl: genre.url, reviewsLink: $route.params.reviewsLink, pbLink: $route.params.pbLink}}"> Update Genre </router-link>
   </div>
   <div v-else>
     <p>loading...</p>
