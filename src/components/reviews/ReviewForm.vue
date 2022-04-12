@@ -12,8 +12,8 @@
   <div class="textWrapper">
     <textarea id="review" rows="10" :value="currentDescription ? currentDescription : ''"></textarea>
   </div>
-  <button class="button" @click="sendReviewRequest()">Update</button>
-  <button class="button" @click="deleteReview()"> Delete </button>
+  <button class="button" @click="sendReviewRequest()">{{isPostRequest() ? 'Submit' : 'Update'}}</button>
+  <button v-if="!isPostRequest()" class="button" @click="deleteReview()"> Delete </button>
 </template>
 
 <script>
@@ -31,6 +31,7 @@ export default {
   methods:{
     async fetchUsers(){
       await this.setCurrentData();
+      console.log(this.currentDescription);
       const res = await fetch(this.$route.params.users.toString());
       const usersJson = await res.json();
       this.users = [];
@@ -77,6 +78,9 @@ export default {
       await fetch(this.$route.params["reqUrl"].toString(), requestOptions);
       await this.$router.push({name: 'book', params: {link: this.$route.params.link, users: this.$route.params.users,
           genresLink: this.$route.params.genresLink, reviewsLink: this.$route.params.reviewsLink}});
+    },
+    isPostRequest(){
+      return this.$route.params["request"].toString() === 'POST';
     }
   }
 }
