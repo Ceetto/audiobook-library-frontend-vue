@@ -7,6 +7,9 @@
       </li>
     </ul>
   </div>
+  <div v-else>
+    <p>loading...</p>
+  </div>
 </template>
 
 <script>

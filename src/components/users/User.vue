@@ -6,6 +6,9 @@
     <br>
     <router-link :to="{name: 'userForm', params: {title: 'Update User', request: 'PATCH', link:user.url, redirectLink: user['url'], route: 'user'}}"> Update User </router-link>
   </div>
+  <div v-else>
+    <p>loading...</p>
+  </div>
 </template>
 
 <script>

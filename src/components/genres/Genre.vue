@@ -12,6 +12,9 @@
     <router-link :to="{name: 'genreForm', params: {title: 'Update Genre', request: 'PATCH', link:genre.url,
                         redirectRoute: 'genre', redirectUrl: genre.url, books:$route.params.books}}"> Update Genre </router-link>
   </div>
+  <div v-else>
+    <p>loading...</p>
+  </div>
 </template>
 
 <script>

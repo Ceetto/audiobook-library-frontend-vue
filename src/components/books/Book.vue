@@ -24,7 +24,9 @@
                       request: 'POST', redirectRoute: 'book', redirectUrl: book.url}}"> Write review </router-link>
     <Reviews></Reviews>
   </div>
-
+  <div v-else>
+    <p>loading...</p>
+  </div>
 </template>
 
 <script>

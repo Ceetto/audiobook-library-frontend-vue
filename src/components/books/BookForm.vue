@@ -45,6 +45,9 @@
    </div>
    <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
   </div>
+  <div v-else>
+    <p>loading...</p>
+  </div>
 
 </template>
 
