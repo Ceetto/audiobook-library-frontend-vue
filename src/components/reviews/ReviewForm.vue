@@ -62,7 +62,7 @@ export default {
     },
     async setCurrentData(){
       if(this.$route.params.request === "PATCH"){
-        const res = await fetch(this.$route.params["reviewsLink"].toString());
+        const res = await fetch(this.$route.params["reqUrl"].toString());
         let review = await res.json();
         this.currentUser = review.user;
         this.currentScore = review.score;
