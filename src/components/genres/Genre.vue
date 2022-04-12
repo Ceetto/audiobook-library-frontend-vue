@@ -7,10 +7,10 @@
     <router-link :to="{name: 'book', params:{link: book['url'], genresLink: this.genre.index}}" v-for="book in genre['books']" :key="book">{{book["name"]}}</router-link>
     <hr>
     <router-link :to="{name: 'genreForm', params: {title: 'Delete Genre', request: 'DELETE', link:genre.url,
-                        redirectRoute: 'genres', redirectUrl: genre.index, books:$route.params.books}}"> Delete Genre </router-link>
+                        redirectRoute: 'genres', redirectUrl: genre.index}}"> Delete Genre </router-link>
     <br>
     <router-link :to="{name: 'genreForm', params: {title: 'Update Genre', request: 'PATCH', link:genre.url,
-                        redirectRoute: 'genre', redirectUrl: genre.url, books:$route.params.books}}"> Update Genre </router-link>
+                        redirectRoute: 'genre', redirectUrl: genre.url}}"> Update Genre </router-link>
   </div>
   <div v-else>
     <p>loading...</p>
@@ -26,12 +26,10 @@ export default {
     async fetchGenreData(){
       const res = await fetch(this.$route.params["link"].toString());
       this.genre = await res.json();
-      let books = await Books.methods.fetchData(this.$route.params['books']);
+      let books = this.genre["audiobooks"];
       this.genre.books = [];
       for (let i in books){
-        if(books[i]["genres"].includes(this.$route.params["link"])){
-          this.genre.books.push(books[i])
-        }
+        this.genre.books.push(await Books.methods.fetchBookData(books[i]))
       }
       this.isFetching = false;
     }

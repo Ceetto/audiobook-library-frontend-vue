@@ -18,11 +18,11 @@ const routes = [
     {path: '/', component: Home},
     {name: 'books', path: '/books/:link/:genresLink/:users', component: Books},
     {name: 'book', path: '/books/book/:link/:genresLink/:users', component: Book},
-    {name: 'bookForm', path: '/books/create/:title/:request/:link/:redirectLink/:route/:genresLink', component: BookForm},
+    {name: 'bookForm', path: '/books/create/:title/:request/:link/:redirectLink/:route/:genresLink/:users', component: BookForm},
 
-    {name: 'genres', path: '/genres/:link/:books/:users', component: Genres},
-    {name: 'genre', path: '/genres/genre/:link/:books/:users', component: Genre},
-    {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl/:books', component: GenreForm},
+    {name: 'genres', path: '/genres/:link/:users', component: Genres},
+    {name: 'genre', path: '/genres/genre/:link/:users', component: Genre},
+    {name: 'genreForm', path: '/genres/create/:title/:request/:link/:redirectRoute/:redirectUrl/:users', component: GenreForm},
 
     {name: 'users', path:'/users/:link', component: Users},
     {name: 'user', path: '/users/user/:link', component: User},

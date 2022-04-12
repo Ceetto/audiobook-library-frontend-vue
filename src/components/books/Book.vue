@@ -54,10 +54,6 @@ export default {
         this.book.genres.push(await Genres.methods.fetchGenreData(genres[i]))
       }
       this.book.publicationDate = this.formatDate(this.book.publicationDate)
-
-      console.log(this.book.url)
-      console.log(this.$route.params.users)
-
       this.isFetching = false;
     },
     formatDate(date) {
