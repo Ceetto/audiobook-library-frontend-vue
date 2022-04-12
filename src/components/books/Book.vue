@@ -15,7 +15,7 @@
     <h3>Duration:</h3>
     <p>{{book["duration"] / 1000}}s</p>
     <h3>Purchase link:</h3>
-    <a :href=" 'http://' + book['link']">{{book["link"]}}</a>
+    <a :href=" 'http://' + book['link']" target="_blank">{{book["link"]}}</a>
     <hr>
     <router-link :to="{name: 'bookForm', params: {title: 'Delete Book', request: 'DELETE', link:book.url, redirectLink: book['index'], route: 'books',
                       genresLink: $route.params.genresLink}}"> Delete Book </router-link>
@@ -56,6 +56,7 @@ export default {
       for (let i in genres){
         this.book.genres.push(await Genres.methods.fetchGenreData(genres[i]))
       }
+      console.log(this.book.genres);
       this.book.publicationDate = this.formatDate(this.book.publicationDate)
       this.isFetching = false;
     },

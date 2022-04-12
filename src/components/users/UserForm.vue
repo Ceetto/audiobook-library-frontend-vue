@@ -1,25 +1,39 @@
 <template>
-  <h1> {{getTitle()}}</h1>
-  <div v-if="isDeleteRequest()">
-    <p>Do you really want to delete this user?</p>
-  </div>
-  <div v-else>
-    <div>
-      <label> Username:</label>
-      <input id="username" type="text" placeholder="username" name="username" value="">
+  <div v-if="!isFetching">
+    <h1> {{getTitle()}}</h1>
+    <div v-if="isDeleteRequest()">
+      <p>Do you really want to delete this user?</p>
     </div>
+    <div v-else>
+      <div>
+        <label> Username:</label>
+        <input id="username" type="text" placeholder="username" name="username" :value="undefined===userData ? '' : userData.name">
+      </div>
 
-    <div>
-      <label> Email: </label>
-      <input class="form-control" id="email" type="text" placeholder="email" name="email" value="">
+      <div>
+        <label> Email: </label>
+        <input class="form-control" id="email" type="text" placeholder="email" name="email" :value="undefined===userData ? '' : userData.email">
+      </div>
     </div>
+    <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
   </div>
-  <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
 </template>
 
 <script>
 export default {
   name: "UserForm",
+  data(){
+    let isFetching = false;
+    let userData = undefined;
+    if(this.$route.params['request'] === "PATCH"){
+      isFetching = true;
+      userData = this.fetchUserData();
+    }
+    return{
+      isFetching: isFetching,
+      userData: userData,
+    }
+  },
   methods: {
     getTitle(){
       return this.$route.params["title"];
@@ -45,6 +59,12 @@ export default {
     },
     isDeleteRequest(){
       return this.$route.params["request"] === 'DELETE'
+    },
+
+    async fetchUserData(){
+      const res = await fetch(this.$route.params['link'].toString())
+      this.userData = await res.json();
+      this.isFetching = false;
     }
   }
 }

@@ -1,26 +1,40 @@
 <template>
-  <h1> {{ getTitle() }} </h1>
-  <div v-if="isDeleteRequest()">
-    <p> Do you really want to delete this genre?</p>
-  </div>
-  <div v-else>
-    <div>
-      <label> Genre name:</label>
-      <input id="name" type="text" placeholder="Fantasy, Poetry etc." name="name" value="">
+  <div v-if="!isFetching">
+    <h1> {{ getTitle() }} </h1>
+    <div v-if="isDeleteRequest()">
+      <p> Do you really want to delete this genre?</p>
+    </div>
+    <div v-else>
+      <div>
+        <label> Genre name:</label>
+        <input id="name" type="text" placeholder="Fantasy, Poetry etc." name="name" :value="undefined===genreData ? '' : genreData.name">
+      </div>
+
+      <div>
+        <label> Description: </label>
+        <input class="form-control" id="description" type="text" placeholder="Put the description here." name="name" :value="undefined===genreData ? '' : genreData.description">
+      </div>
     </div>
 
-    <div>
-      <label> Description: </label>
-      <input class="form-control" id="description" type="text" placeholder="Put the description here." name="name" value="">
-    </div>
+    <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
   </div>
-
-  <button class="btn btn-primary" type="submit" @click="sendRequest()">{{ isDeleteRequest() ? 'Delete' : 'Submit'}}</button>
 </template>
 
 <script>
 export default {
   name: "GenreForm",
+  data(){
+    let isFetching = false;
+    let genreData = undefined;
+    if(this.$route.params['request'] === "PATCH"){
+      isFetching = true;
+      genreData = this.fetchGenreData();
+    }
+    return{
+      isFetching: isFetching,
+      genreData: genreData,
+    }
+  },
   methods:{
     getTitle(){
       return this.$route.params["title"]
@@ -46,6 +60,12 @@ export default {
     },
     isDeleteRequest(){
       return this.$route.params["request"] === 'DELETE'
+    },
+
+    async fetchGenreData(){
+      const res = await fetch(this.$route.params['link'].toString())
+      this.genreData = await res.json();
+      this.isFetching = false;
     }
   }
 }
