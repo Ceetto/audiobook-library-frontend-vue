@@ -4,7 +4,7 @@
     <ul>
       <li v-for="book in books " :key="book">
         <router-link :to= "{name: 'book', params:{link: book['url'], users: $route.params.users, genresLink: $route.params.genresLink,
-                              reviewsLink: $route.params.reviewsLink }}"> {{ book['name'] }} </router-link> <br>
+                              reviewsLink: $route.params.reviewsLink, pbLink:$route.params['pbLink'] }}"> {{ book['name'] }} </router-link> <br>
       </li>
     </ul>
   </div>

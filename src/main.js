@@ -17,9 +17,9 @@ import PlaybackForm from "@/components/playbacks/PlaybackForm";
 
 const routes = [
     {path: '/', component: Home},
-    {name: 'books', path: '/books/:link/:genresLink/:users/:reviewsLink', component: Books},
-    {name: 'book', path: '/books/book/:link/:genresLink/:users/:reviewsLink', component: Book},
-    {name: 'bookForm', path: '/books/create/:title/:request/:link/:redirectLink/:route/:genresLink/:users', component: BookForm},
+    {name: 'books', path: '/books/:link/:genresLink/:users/:reviewsLink/:pbLink', component: Books},
+    {name: 'book', path: '/books/book/:link/:genresLink/:users/:reviewsLink/:pbLink', component: Book},
+    {name: 'bookForm', path: '/books/create/:title/:request/:link/:redirectLink/:route/:genresLink/:users/:reviewsLink/:pbLink', component: BookForm},
 
     {name: 'genres', path: '/genres/:link/:users', component: Genres},
     {name: 'genre', path: '/genres/genre/:link/:users', component: Genre},
@@ -27,12 +27,12 @@ const routes = [
 
     {name: 'users', path:'/users/:link/:books/:pbLink', component: Users},
     {name: 'user', path: '/users/user/:link/:books/:pbLink', component: User},
-    {name: 'userForm', path: '/users/create/:title/:request/:link/:redirectLink/:route', component: UserForm},
+    {name: 'userForm', path: '/users/create/:title/:request/:link/:redirectLink/:route/:books/:pbLink', component: UserForm},
 
     {name: 'playbackForm', path: '/users/user/:title/:request/:link/:redirectLink/:route/:books/:user', component: PlaybackForm},
 
     {name: 'reviews', path: '/books/book/:link/:title/:users', component: Reviews, props: true},
-    {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request/:redirectRoute/:redirectUrl/:reviewsLink/:genresLink', component: ReviewForm}
+    {name: 'reviewForm', path: '/books/book/createReview/:link/:title/:users/:request/:redirectRoute/:redirectUrl/:reviewsLink/:genresLink/:pbLink', component: ReviewForm}
 ]
 
 const router = createRouter({

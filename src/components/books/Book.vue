@@ -21,13 +21,13 @@
                       genresLink: $route.params.genresLink}}"> Delete Book </router-link>
     <br>
     <router-link :to="{name: 'bookForm', params: {title: 'Update User', request: 'PATCH', link:book.url, redirectLink: book['url'], route: 'book',
-                      genresLink: $route.params.genresLink}}"> Update Book </router-link>
+                      genresLink: $route.params.genresLink, reviewsLink: $route.params['reviewsLink'], pbLink:this.$route.params.pbLink}}"> Update Book </router-link>
     <hr>
     <router-link :to="{name: 'reviewForm', params: {link: book.url, title: 'Create review', users: $route.params.users,
                       request: 'POST', redirectRoute: 'book', redirectUrl: book.url, reviewsLink: $route.params.reviewsLink,
-                      genresLink: $route.params.genresLink}}"> Write review </router-link>
+                      genresLink: $route.params.genresLink, pbLink:$route.params.pbLink}}"> Write review </router-link>
     <Reviews :reviews="book.reviews" :users="$route.params.users.toString()" :genres-link="$route.params.genresLink.toString()"
-              :reviews-link="$route.params.reviewsLink.toString()">  </Reviews>
+              :reviews-link="$route.params.reviewsLink.toString()" :books-link="book['index']" :pb-link="$route.params.pbLink">  </Reviews>
   </div>
   <div v-else>
     <p>loading...</p>

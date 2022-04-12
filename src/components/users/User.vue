@@ -4,7 +4,7 @@
     <p>{{user["email"]}}</p>
     <router-link :to="{name: 'userForm', params: {title: 'Delete User', request: 'DELETE', link:user.url, redirectLink: user['index'], route: 'users'}}"> Delete User </router-link>
     <br>
-    <router-link :to="{name: 'userForm', params: {title: 'Update User', request: 'PATCH', link:user.url, redirectLink: user['url'], route: 'user'}}"> Update User </router-link>
+    <router-link :to="{name: 'userForm', params: {title: 'Update User', request: 'PATCH', link:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books, pbLink:$route.params.pbLink}}"> Update User </router-link>
     <hr style="height: 3px">
     <h1>Playbacks:</h1>
 

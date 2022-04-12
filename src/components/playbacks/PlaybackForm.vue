@@ -73,7 +73,10 @@ export default {
       let books = this.books["audiobooks"];
       this.books = [];
       for (let book of books){
-        this.books.push(await Books.methods.fetchBookData(book))
+        let tmp = await Books.methods.fetchBookData(book);
+        //console.log(tmp)
+        if(!tmp.removed)
+          this.books.push(tmp)
       }
     }
   }

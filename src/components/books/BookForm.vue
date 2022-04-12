@@ -97,7 +97,7 @@ export default {
 
       }
       await fetch(this.$route.params["link"].toString(), requestOtions);
-      await this.$router.push({name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"]}});
+      await this.$router.push({name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"], reviewsLink:this.$route.params["reviewsLink"], pbLink:this.$route.params.pbLink}});
     },
 
     async fetchGenres(){

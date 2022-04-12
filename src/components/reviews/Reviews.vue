@@ -3,7 +3,7 @@
   <div v-for="review in fetchedReviews" :key="review">
     <hr>
     <p class="data">User: </p>
-    <router-link class="data" :to="{name: 'user', params: {link: review.user}}"> {{review.userName}} </router-link>
+    <router-link class="data" :to="{name: 'user', params: {link: review.user, books:booksLink, pbLink:pbLink}}"> {{review.userName}} </router-link>
     <p class="data">  |  Score: {{review.score}}  |  </p>
     <router-link class="data" :to="{name: 'reviewForm', params: {link: review.audiobook, title: 'Edit review', users: users,
                                     request: 'PATCH', redirectRoute: 'book', redirectUrl: review.audiobook, reviewsLink: review.url,
@@ -20,7 +20,9 @@ export default {
     reviews: [Object],
     users: String,
     genresLink: String,
-    reviewsLink: String
+    reviewsLink: String,
+    booksLink: String,
+    pbLink: String,
   },
   methods: {
     async fetchData(){
