@@ -19,11 +19,12 @@
     <br>
     <router-link :to="{name: 'bookForm', params: {title: 'Update User', request: 'PATCH', link:book.url, redirectLink: book['url'], route: 'book',
                       genresLink: $route.params.genresLink}}"> Update Book </router-link>
-  </div>
-  <hr>
-  <router-link :to="{name: 'reviewForm', params: {link: book.url, title: 'Create review', users: $route.params.users,
+    <hr>
+    <router-link :to="{name: 'reviewForm', params: {link: book.url, title: 'Create review', users: $route.params.users,
                       request: 'POST', redirectRoute: 'book', redirectUrl: book.url}}"> Write review </router-link>
-  <Reviews></Reviews>
+    <Reviews></Reviews>
+  </div>
+
 </template>
 
 <script>
@@ -51,6 +52,10 @@ export default {
         this.book.genres.push(await Genres.methods.fetchGenreData(genres[i]))
       }
       this.book.publicationDate = this.formatDate(this.book.publicationDate)
+
+      console.log(this.book.url)
+      console.log(this.$route.params.users)
+
       this.isFetching = false;
     },
     formatDate(date) {
