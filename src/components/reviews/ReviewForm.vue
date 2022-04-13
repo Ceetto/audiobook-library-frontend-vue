@@ -1,7 +1,9 @@
 <template>
   <h2> {{ $route.params.title }}</h2>
+  <div v-if="errorMessage !== undefined">
+    <p id="error"> {{errorMessage.message}} </p>
+  </div>
   <label>User:</label>
-
   <select id="dropDownUser" name="user" >
   <option v-for="user in users" :key="user" :value="user.url" :selected="user.url === currentUser"> {{user.name}} </option>
   </select>
@@ -25,7 +27,8 @@ export default {
       users: this.fetchUsers(),
       currentUser: String,
       currentScore: Number,
-      currentDescription: ''
+      currentDescription: '',
+      errorMessage: undefined,
     }
   },
   methods:{
@@ -54,7 +57,7 @@ export default {
         body: JSON.stringify({user: user, audiobook: this.$route.params.link, description: description, score: score})
       }
       const res = await fetch(this.$route.params["reqUrl"].toString(), requestOptions);
-      await App.methods.checkStatusAndRedirect(res, {
+      this.errorMessage = await App.methods.checkStatusAndRedirect(res, {
         name: 'book', params: {
           link: this.$route.params.link, users: this.$route.params.users,
           genresLink: this.$route.params.genresLink, reviewsLink: this.$route.params.reviewsLink

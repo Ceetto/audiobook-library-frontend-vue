@@ -19,8 +19,9 @@ export default {
     async checkStatusAndRedirect(res, route, router){
       let status = await res.status;
       if (status === 400){
-        let message = await res.json();
-        alert(message.message);
+        return await res.json();
+        // let message = await res.json();
+        // alert(message.message);
       } else {
         await router.push(route);
       }
@@ -69,5 +70,8 @@ textarea {
   font-size:15px;
   width:100%;
   height: 200px;
+}
+#error{
+  color: red;
 }
 </style>

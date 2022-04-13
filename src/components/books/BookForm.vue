@@ -1,6 +1,9 @@
 <template>
  <div v-if="!isFetching">
    <h1> {{getTitle()}}</h1>
+   <div v-if="errorMessage !== undefined">
+     <p id="error"> {{errorMessage.message}} </p>
+   </div>
    <div v-if="isDeleteRequest()">
      <p>Do you really want to delete this book?</p>
    </div>
@@ -66,6 +69,7 @@ export default {
       isFetching: true,
       genres: this.fetchGenres(),
       bookData: bookData,
+      errorMessage: undefined,
     }
   },
   methods:{
@@ -97,7 +101,7 @@ export default {
 
       }
       const res = await fetch(this.$route.params["link"].toString(), requestOtions);
-      await App.methods.checkStatusAndRedirect(res, {name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"], reviewsLink:this.$route.params["reviewsLink"], pbLink:this.$route.params.pbLink}}, this.$router);
+      this.errorMessage = await App.methods.checkStatusAndRedirect(res, {name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"], reviewsLink:this.$route.params["reviewsLink"], pbLink:this.$route.params.pbLink}}, this.$router);
 
     },
 

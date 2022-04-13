@@ -1,6 +1,9 @@
 <template>
   <div v-if="!isFetching">
     <h1> {{getTitle()}}</h1>
+    <div v-if="errorMessage !== undefined">
+      <p id="error"> {{errorMessage.message}} </p>
+    </div>
     <div v-if="isDeleteRequest()">
       <p>Do you really want to delete this user?</p>
     </div>
@@ -34,6 +37,7 @@ export default {
     return{
       isFetching: isFetching,
       userData: userData,
+      errorMessage: undefined,
     }
   },
   methods: {
@@ -58,7 +62,7 @@ export default {
       }
       const res = await fetch(this.$route.params["link"].toString(), requestOptions);
       //await this.$router.push({name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"]}})
-      await App.methods.checkStatusAndRedirect(res, {name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"]}}, this.$router)
+      this.errorMessage = await App.methods.checkStatusAndRedirect(res, {name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"]}}, this.$router)
     },
     isDeleteRequest(){
       return this.$route.params["request"] === 'DELETE'

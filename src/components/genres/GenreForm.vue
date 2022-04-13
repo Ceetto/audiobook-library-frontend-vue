@@ -1,6 +1,9 @@
 <template>
   <div v-if="!isFetching">
     <h1> {{ getTitle() }} </h1>
+    <div v-if="errorMessage !== undefined">
+      <p id="error"> {{errorMessage.message}} </p>
+    </div>
     <div v-if="isDeleteRequest()">
       <p> Do you really want to delete this genre?</p>
     </div>
@@ -35,6 +38,7 @@ export default {
     return{
       isFetching: isFetching,
       genreData: genreData,
+      errorMessage: undefined,
     }
   },
   methods:{
@@ -58,7 +62,7 @@ export default {
         };
       }
       const res = await fetch(this.$route.params["link"].toString(), requestOptions);
-      await App.methods.checkStatusAndRedirect(res, {
+      this.errorMessage = await App.methods.checkStatusAndRedirect(res, {
         name: this.$route.params.redirectRoute.toString(),
         params: {link: this.$route.params.redirectUrl.toString(), pbLink:this.$route.params.pbLink}
       }, this.$router);
