@@ -12,7 +12,7 @@
       <hr>
       <h3>{{pb.audiobook.name}}</h3>
       <label style="display: inline">Position: </label>
-      <p style="display: inline;"> {{pb.position / 1000}}s / {{pb.audiobook.duration}}s</p>
+      <p style="display: inline;"> {{pb.position / 1000}}s / {{pb.audiobook.duration / 1000}}s</p>
       <router-link :to="{name: 'playbackForm', params:{title: 'Update Playback for user:' + user.name, request:'PATCH',
                          link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books, pbLink: $route.params.pbLink}}"> Update playback </router-link> |
       <router-link :to="{name: 'playbackForm', params:{title: 'Update Playback for user:' + user.name, request:'DELETE',
