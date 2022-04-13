@@ -1,5 +1,5 @@
 <template>
-  <h1> Welcome to D-Z-Nüts</h1>
+  <h1>Audiobook library</h1>
 </template>
 
 <script>
