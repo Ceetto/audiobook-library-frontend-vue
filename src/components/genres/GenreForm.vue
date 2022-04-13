@@ -34,6 +34,7 @@ export default {
       isFetching = true;
       genreData = this.fetchGenreData();
     }
+
     return{
       isFetching: isFetching,
       genreData: genreData,
@@ -74,6 +75,12 @@ export default {
       const res = await fetch(this.$route.params['link'].toString())
       this.genreData = await res.json();
       this.isFetching = false;
+    }
+  },
+  updated() {
+    if (this.$route.params.request === "POST"){
+      document.getElementById("name").value = "";
+      document.getElementById("description").value = "";
     }
   }
 }

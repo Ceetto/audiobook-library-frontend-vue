@@ -31,7 +31,7 @@
 
      <label>Genres:</label>
      <div id="genres" v-for="genre in genres" :key="genre">
-       <input type="checkbox" class="genreCheckbox" name="genre" :id="genre" :value="genre.url" :checked=genre.checked>
+       <input type="checkbox" class="genreCheckbox" name="genre" id="genre" :value="genre.url" :checked=genre.checked>
        <label>{{genre["name"]}}</label>
      </div>
 
@@ -134,6 +134,19 @@ export default {
       this.bookData.publicationDate = new Date(this.bookData.publicationDate);
       this.bookData.publicationDate = this.bookData.publicationDate.toISOString().split('T')[0];
 
+    }
+  },
+  updated() {
+    if (this.$route.params.request === "POST"){
+      document.getElementById("title").value = "";
+      document.getElementById("authors").value = "";
+      document.getElementById("summary").value = "";
+      document.getElementById("duration").value = "";
+      for (const genre of this.genres){
+        genre.checked = false;
+      }
+      document.getElementById("date").value = "";
+      document.getElementById("link").value = "";
     }
   }
 }
