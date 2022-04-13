@@ -139,4 +139,6 @@ export default {
 #genres{
   display: inline;
 }
+
+
 </style>

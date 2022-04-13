@@ -90,9 +90,4 @@ export default {
 .textWrapper{
   padding: 5px;
 }
-
-textarea {
-  font-size:15px;
-  width:100%;
-}
 </style>

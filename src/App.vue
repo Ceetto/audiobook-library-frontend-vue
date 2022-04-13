@@ -64,4 +64,10 @@ input::placeholder, textarea::placeholder, button{
   height: 40px;
   margin: 15px;
 }
+
+textarea {
+  font-size:15px;
+  width:100%;
+  height: 200px;
+}
 </style>
