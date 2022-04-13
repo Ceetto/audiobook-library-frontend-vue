@@ -1,15 +1,10 @@
 <template>
-  <div id="users" v-if="!isFetching">
     <h1> All Users</h1>
     <ul>
       <li v-for="user in users " :key="user">
         <router-link :to="{name: 'user', params:{link: user['url'], books:$route.params.books, pbLink:$route.params.pbLink}}"> {{ user['name'] }} </router-link>
       </li>
     </ul>
-  </div>
-  <div v-else>
-    <p>loading...</p>
-  </div>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div id="AllBooks" v-if="!isFetching">
+<!--  <div id="AllBooks" v-if="!isFetching">-->
     <h1 v-if="!hasParent"> All Audiobooks</h1>
     <ul>
       <li v-for="book in books " :key="book">
@@ -7,10 +7,10 @@
                               reviewsLink: $route.params.reviewsLink, pbLink:$route.params['pbLink'] }}"> {{ book['name'] }} </router-link> <br>
       </li>
     </ul>
-  </div>
-  <div v-else>
-    <p>loading...</p>
-  </div>
+<!--  </div>-->
+<!--  <div v-else>-->
+<!--    <p>loading...</p>-->
+<!--  </div>-->
 </template>
 
 <script>
