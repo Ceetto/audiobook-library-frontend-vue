@@ -69,6 +69,12 @@ export default {
       this.userData = await res.json();
       this.isFetching = false;
     }
+  },
+  updated(){
+    if (this.$route.params.request === "POST"){
+      document.getElementById("username").value = "";
+      document.getElementById("email").value = "";
+    }
   }
 }
 </script>
