@@ -4,19 +4,24 @@
     <p>{{user["email"]}}</p>
     <router-link :to="{name: 'userForm', params: {title: 'Delete User', request: 'DELETE', link:user.url, redirectLink: user['index'], route: 'users'}}"> Delete User </router-link>
     <br>
-    <router-link :to="{name: 'userForm', params: {title: 'Update User', request: 'PATCH', link:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books, pbLink:$route.params.pbLink}}"> Update User </router-link>
+    <router-link :to="{name: 'userForm', params: {title: 'Update User', request: 'PATCH', link:user.url,
+                        redirectLink: user['url'], route: 'user', books:$route.params.books,
+                        pbLink:$route.params.pbLink}}"> Update User </router-link>
     <hr style="height: 3px">
     <h1>Playbacks:</h1>
 
     <div v-for="pb in user['playbacks']" :key="pb">
       <hr>
-      <h3>{{pb.audiobook.name}}</h3>
+      <router-link :to="{name: 'book', params:{link: pb.audiobook.url, genresLink:bookLinkData.genres,
+                         users:bookLinkData.users, reviewsLink: bookLinkData.reviews, pbLink:bookLinkData.playbacks}}">
+        {{pb.audiobook.name}} <br>
+      </router-link>
       <label style="display: inline">Position: </label>
-      <p style="display: inline;"> {{pb.position / 1000}}s / {{pb.audiobook.duration / 1000}}s</p>
+      <p style="display: inline;"> {{pb.position / 1000}}s / {{pb.audiobook.duration / 1000}}s</p> |
       <router-link :to="{name: 'playbackForm', params:{title: 'Update Playback for user:' + user.name, request:'PATCH',
-                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books, pbLink: $route.params.pbLink}}"> Update playback </router-link> |
+                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books, pbLink: $route.params.pbLink}}">Update playback </router-link> |
       <router-link :to="{name: 'playbackForm', params:{title: 'Update Playback for user:' + user.name, request:'DELETE',
-                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books, pbLink: $route.params.pbLink}}"> Delete playback </router-link>
+                         link:pb.url, user:user.url, redirectLink: user['url'], route: 'user', books:$route.params.books, pbLink: $route.params.pbLink}}">Delete playback </router-link>
     </div>
     <hr style="height: 3px">
     <router-link :to="{name: 'playbackForm', params: {title: 'Create Playback for user: ' + user.name, request: 'POST',
@@ -35,7 +40,8 @@ export default {
   data() {
     return{
       isFetching: true,
-      user: this.fetchData()
+      user: this.fetchData(),
+      bookLinkData: this.fetchBookData()
     }
   },
   methods: {
@@ -55,6 +61,13 @@ export default {
       const res = await fetch(url);
       return res.json();
     },
+    async fetchBookData(){
+      const booksRes = await fetch(this.$route.params["books"].toString());
+      const books = await booksRes.json();
+
+      const homeRes = await fetch(books["index"]);
+      this.bookLinkData = await homeRes.json();
+    }
   }
 }
 </script>
