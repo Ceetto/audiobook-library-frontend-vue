@@ -62,7 +62,8 @@ export default {
       }
       const res = await fetch(this.$route.params["link"].toString(), requestOptions);
       //await this.$router.push({name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"]}})
-      this.errorMessage = await App.methods.checkStatusAndRedirect(res, {name: this.$route.params["route"].toString(), params: {link: this.$route.params["redirectLink"]}}, this.$router)
+      this.errorMessage = await App.methods.checkStatusAndRedirect(res, {name: this.$route.params["route"].toString(),
+        params: {link: this.$route.params["redirectLink"], books: this.$route.params["books"], pbLink: this.$route.params["pbLink"]}}, this.$router)
     },
     isDeleteRequest(){
       return this.$route.params["request"] === 'DELETE'

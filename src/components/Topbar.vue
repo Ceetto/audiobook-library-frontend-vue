@@ -13,7 +13,7 @@
       <router-link :to="{name: 'genreForm', params: {title: 'Create Genre', request: 'POST', link: links.genres,
             redirectRoute: 'genres', redirectUrl: links.genres, books:links.audiobooks, users: links['users'], reviewsLink:links['reviews'], pbLink:links['playbacks']}}">Create Genre</router-link>
       <router-link :to="{name: 'userForm', params: {title: 'Create User', request: 'POST', link: links.users,
-      redirectLink: links.users, route:'users', books:links['users'], pbLink:links['playbacks'], reviewsLink:links['reviews'], pbLink:links['playbacks']}}">Create User</router-link>
+      redirectLink: links.users, route:'users', books:links['audiobooks'], pbLink:links['playbacks'], reviewsLink:links['reviews'], pbLink:links['playbacks']}}">Create User</router-link>
     </div>
   </div>
 </template>

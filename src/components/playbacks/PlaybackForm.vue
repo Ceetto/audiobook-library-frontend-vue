@@ -75,7 +75,7 @@ export default {
       this.isFetching = false;
     },
     async fetchBooksData(){
-
+      console.log(this.$route.params["books"].toString())
       const res = await fetch(this.$route.params["books"].toString());
       this.books = await res.json();
       let books = this.books["audiobooks"];
