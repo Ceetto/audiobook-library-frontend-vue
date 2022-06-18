@@ -24,5 +24,5 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Description
-This is a project I made in my second year of university @Ghent-University together with @GashinRS.
+This is a project I made in my second year of university @Ghent-University together with [Sheng Tao Tian](https://github.com/GashinRS).
 It's a frontend in vue for the following REST api: https://groep34.webdev.ilabt.imec.be/
