@@ -1,4 +1,4 @@
-# webdev_project_2
+# audiobook library frontend in vue
 
 ## Project setup
 ```
@@ -22,3 +22,7 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Description
+This is a project I made in my second year of university @Ghent-University together with @GashinRS.
+It's a frontend in vue for the following REST api: https://groep34.webdev.ilabt.imec.be/
