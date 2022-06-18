@@ -1,3 +1,5 @@
+# Audiobook library frontend in Vue
+
 ## Description
 Made in collaboration with [Jahid Chetti](https://github.com/jchetti) in my second year @Ghent-University. 
 
@@ -11,8 +13,6 @@ No authentication was implemented as the goal of this project was to familiarize
 ![image](https://user-images.githubusercontent.com/107751576/174436034-3bd49a56-2b50-4b6c-8c20-f6ac9592bdbf.png)
 
 ![image](https://user-images.githubusercontent.com/107751576/174436040-eceb3f79-58a7-45e9-b0cc-7dea5cfbb8f0.png)
-
-# audiobook library frontend in vue
 
 ## Project setup
 ```
