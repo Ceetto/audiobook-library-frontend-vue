@@ -3,7 +3,7 @@
 ## Description
 Made in collaboration with [Jahid Chetti](https://github.com/jchetti) in my second year @Ghent-University. 
 
-This is a simple audiobook library with which users can manage which audiobooks they've read by adding new books to their profiles, keeping track of their progress for different audiobooks and writing reviews. It consists of just the frontend, written in vue, using the following REST API https://groep34.webdev.ilabt.imec.be/.
+This is a simple audiobook library with which users can manage which audiobooks they've read by adding new books to their profiles, keeping track of their progress for different audiobooks and writing reviews. It consists of just the frontend, written in Vue, using the following REST API https://groep34.webdev.ilabt.imec.be/.
 No authentication was implemented as the goal of this project was to familiarize with frontend development.
 
 ![image](https://user-images.githubusercontent.com/107751576/174436024-db054078-bfb9-4524-a7e9-b0e896127f40.png)
